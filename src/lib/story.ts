@@ -23,8 +23,8 @@ export type StoryNode = {
       text: 'The candle illuminates strange symbols written in red across the walls. The whispers grow louder.',
       image: '/Images/joao.png',
       choices: [
-        { text: 'Read the symbols aloud', nextId: 'symbols' },
-        { text: 'Extinguish the candle', nextId: 'dark' }
+        { text: 'Read the symbols aloud', nextId: 'start' },
+        { text: 'Extinguish the candle', nextId: 'padre' }
       ]
     },
     padre: {
@@ -32,8 +32,8 @@ export type StoryNode = {
         text: 'The candle illuminates strange symbols written in red across the walls. The whispers grow louder.',
         image: '/Images/padre.png',
         choices: [
-          { text: 'Read the symbols aloud', nextId: 'symbols' },
-          { text: 'Extinguish the candle', nextId: 'dark' }
+          { text: 'Read the symbols aloud', nextId: 'start' },
+          { text: 'Extinguish the candle', nextId: 'joao' }
         ]
       },
   };
