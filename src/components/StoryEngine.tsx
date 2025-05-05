@@ -2,17 +2,29 @@ import { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
 import { story, StoryNode } from '../lib/story';
 import { Howl } from 'howler';
-// ...imports unchanged
 import styles from '../styles/StoryEngine.module.css';
+
+type PathNode = {
+  id: string;
+  children: PathNode[];
+  parent?: PathNode;
+};
+
+const createNode = (id: string, parent?: PathNode): PathNode => ({
+  id,
+  parent,
+  children: []
+});
 
 const StoryEngine = () => {
   const [hasStarted, setHasStarted] = useState(false);
-  const [currentId, setCurrentId] = useState<string>('start');
+  const [currentNode, setCurrentNode] = useState<PathNode>(() => createNode('start'));
+  const [rootNode, setRootNode] = useState<PathNode>(() => createNode('start'));
   const [displayedText, setDisplayedText] = useState('');
   const [isAnimating, setIsAnimating] = useState(false);
-  const [history, setHistory] = useState<StoryNode[]>([]);
   const beep = useRef<Howl | null>(null);
-  const node: StoryNode = story[currentId];
+  const narrationAudio = useRef<Howl | null>(null);
+  const node: StoryNode = story[currentNode.id];
 
   useEffect(() => {
     if (hasStarted && !beep.current) {
@@ -27,11 +39,20 @@ const StoryEngine = () => {
     setDisplayedText('');
     setIsAnimating(true);
 
+    narrationAudio.current?.stop();
+    narrationAudio.current = null;
+
+    if (node.audio) {
+      narrationAudio.current = new Howl({ src: [node.audio], volume: 1.0 });
+      narrationAudio.current.play();
+    }
+
     const interval = setInterval(() => {
-      if (index < node.text.length) {
-        setDisplayedText((prev) => prev + node.text[index]);
-        if (index > 2 && index % 2 === 0 && node.text[index] !== ' ') {
-          beep.current?.play();
+      const char = node.text[index];
+      if (char !== undefined) {
+        setDisplayedText((prev) => prev + char);
+        if (beep.current && index > 0 && index % 2 === 0 && char.match(/[a-zA-Z0-9]/)) {
+          beep.current.play();
         }
         index++;
       } else {
@@ -40,23 +61,78 @@ const StoryEngine = () => {
       }
     }, 25);
 
-    return () => clearInterval(interval);
-  }, [currentId, hasStarted]);
+    return () => {
+      clearInterval(interval);
+      narrationAudio.current?.stop();
+    };
+  }, [currentNode.id, hasStarted]);
 
   const restartStory = () => {
-    setHasStarted(false);
-    setCurrentId('start');
+    const newRoot = createNode('start');
+    setRootNode(newRoot);
+    setCurrentNode(newRoot);
     setDisplayedText('');
-    setHistory([]);
-    localStorage.removeItem('storyNode');
+    setHasStarted(false);
   };
+
+  const structuredCloneTree = (node: PathNode, parent?: PathNode): PathNode => {
+    const clone: PathNode = {
+      id: node.id,
+      parent,
+      children: node.children.map((child) => structuredCloneTree(child))
+    };
+    clone.children.forEach((child) => (child.parent = clone));
+    return clone;
+  };
+
+  const findNodeById = (node: PathNode, id: string): PathNode | undefined => {
+    if (node.id === id) return node;
+    for (const child of node.children) {
+      const result = findNodeById(child, id);
+      if (result) return result;
+    }
+    return undefined;
+  };
+
+  const handleChoice = (nextId: string) => {
+    const existing = currentNode.children.find((child) => child.id === nextId);
+    if (existing) {
+      setCurrentNode(existing);
+    } else {
+      const newNode = createNode(nextId, currentNode);
+      const newRoot = structuredCloneTree(rootNode);
+      const updatedCurrent = findNodeById(newRoot, currentNode.id);
+      if (updatedCurrent) {
+        updatedCurrent.children.push(newNode);
+      }
+      setRootNode(newRoot);
+      setCurrentNode(newNode);
+    }
+  };
+
+  const renderTree = (node: PathNode, depth = 0) => (
+    <div className={`${styles.treeNodeWrapper} ${depth === 0 ? styles.rootNode : ''}`} key={node.id}>
+      <div
+        className={`${styles.nodeBox} ${node.id === currentNode.id ? styles.current : ''}`}
+        onClick={() => setCurrentNode(node)}
+      >
+        {story[node.id]?.title || node.id}
+      </div>
+      <div className={styles.childrenContainer}>
+        {node.children.map((child) => renderTree(child, depth + 1))}
+      </div>
+    </div>
+  );
 
   if (!hasStarted) {
     return (
       <div className={styles.intro}>
-        <h1>Welcome to the Story</h1>
-        <p>Click the button to begin. Turn up your volume for the best experience.</p>
-        <button onClick={() => setHasStarted(true)}>Start Story</button>
+        <h1 className={styles.engineTitle}>VisioPath</h1>
+        <p className={styles.engineSubtitle}>Your story, your choices, your world—on the web.</p>
+        <p className={styles.enginePrompt}>Click the button to begin. Turn up your volume for the best experience.</p>
+        <button onClick={() => setHasStarted(true)} className={styles.startButton}>
+          Start Story
+        </button>
       </div>
     );
   }
@@ -64,9 +140,20 @@ const StoryEngine = () => {
   return (
     <div className={styles.container}>
       <div className={styles.storyPanel}>
-        {node.image && (
-          <div className={styles.storyImageContainer}>
-            <Image src={node.image} alt="Scene" fill className={styles.storyImage} />
+        {(node.video || node.image) && (
+          <div className={styles.storyMediaContainer}>
+            {node.video ? (
+              <video
+                src={node.video}
+                autoPlay
+                loop
+                muted
+                controls={false}
+                className={styles.storyVideo}
+              />
+            ) : (
+              <Image src={node.image!} alt="Scene" fill className={styles.storyImage} />
+            )}
           </div>
         )}
 
@@ -86,37 +173,22 @@ const StoryEngine = () => {
           {node.choices.map((choice, index) => (
             <button
               key={index}
-              onClick={() => {
-                setHistory((prev) => [...prev, node]);
-                setCurrentId(choice.nextId);
-              }}
+              onClick={() => handleChoice(choice.nextId)}
               className={styles.choiceButton}
             >
               {choice.text}
             </button>
           ))}
         </div>
-      </div>
 
-      {/* Vertical decision tree panel */}
-      <div className={styles.treePanel}>
-        <h2>Your Path</h2>
-        <div className={styles.tree}>
-          {history.map((node, index) => (
-            <div key={index} className={styles.treeNode}>
-              <div className={styles.connector}></div>
-              <div className={styles.nodeBox}>{node.title}</div>
-            </div>
-          ))}
-          {/* Current node */}
-          <div className={styles.treeNode}>
-            <div className={styles.connector}></div>
-            <div className={`${styles.nodeBox} ${styles.current}`}>{node.title}</div>
-          </div>
-        </div>
         <button onClick={restartStory} className={styles.restartButton}>
           Start Again
         </button>
+      </div>
+
+      <div className={styles.treePanel}>
+        <h2>Story Tree</h2>
+        <div className={styles.tree}>{renderTree(rootNode)}</div>
       </div>
     </div>
   );

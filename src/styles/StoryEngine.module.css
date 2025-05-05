@@ -1,140 +1,214 @@
+.storyPanel {
+  background-color: #222;
+  padding: 2rem;
+  border-radius: 12px;
+  flex: 2;
+}
+
+.storyMediaContainer {
+  position: relative;
+  width: 600px;
+  height: 400px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  background-color: #000;
+}
+
+.storyImage {
+  object-fit: contain;
+}
+
+.storyVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.storyText {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  cursor: pointer;
+}
+
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.choiceButton {
+  padding: 1rem;
+  font-size: 1rem;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.choiceButton:hover {
+  background-color: #666;
+}
+
+.treePanel {
+  flex: 1;
+  background-color: #111;
+  padding: 1rem;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.treeNodeWrapper {
+  position: relative;
+  margin: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.treeNodeWrapper::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 10px;
+  background-color: white;
+}
+
+.childrenContainer {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nodeBox {
+  background-color: #333;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.nodeBox:hover {
+  background-color: #444;
+}
+
+.current {
+  background-color: #555;
+  font-weight: bold;
+}
+
+.restartButton {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background-color: #900;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.intro {
+  color: white;
+  text-align: center;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: UndertaleFont, sans-serif;
+}
+
+.intro h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.intro p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.intro button {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
 .container {
-    display: flex;
-    gap: 2rem;
-    font-family: UndertaleFont, sans-serif;
-    color: white;
-  }
-  
-  .storyPanel {
-    background-color: #222;
-    padding: 2rem;
-    border-radius: 12px;
-    flex: 2;
-  }
-  
-  .storyImageContainer {
-    position: relative;
-    width: 100%;
-    height: 400px;
-    border-radius: 8px;
-    overflow: hidden;
-    margin-bottom: 1rem;
-    background-color: #000;
-  }
-  
-  .storyImage {
-    object-fit: contain;
-  }
-  
-  .storyText {
-    font-size: 1.3rem;
-    line-height: 1.6;
-    margin-bottom: 2rem;
-    cursor: pointer;
-  }
-  
-  .choices {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .choiceButton {
-    padding: 1rem;
-    font-size: 1rem;
-    background-color: #444;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-  
-  .choiceButton:hover {
-    background-color: #666;
-  }
-  
-  .treePanel {
-    flex: 1;
-    background-color: #111;
-    padding: 1rem;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .tree {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-  }
-  
-  .treeNode {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-  }
-  
-  .connector {
-    width: 2px;
-    height: 20px;
-    background-color: white;
-    margin-bottom: 0.5rem;
-  }
-  
-  .nodeBox {
-    background-color: #333;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    margin-bottom: 0.5rem;
-    text-align: center;
-  }
-  
-  .current {
-    background-color: #555;
-    font-weight: bold;
-  }
-  
-  .restartButton {
-    margin-top: 1rem;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    background-color: #900;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-  
-  .intro {
-    color: white;
-    text-align: center;
-    padding: 4rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: UndertaleFont, sans-serif;
-  }
-  
-  .intro h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .intro p {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-  }
-  
-  .intro button {
-    padding: 1rem 2rem;
-    font-size: 1.2rem;
-    background-color: #444;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-  
+  display: flex;
+  gap: 2rem;
+  font-family: UndertaleFont, sans-serif;
+  color: white;
+  height: 900px;
+  width: 1000px;
+  overflow: hidden;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+
+.treePanel {
+  flex: 1;
+  background-color: #111;
+  padding: 1rem;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto; /* Enable scrolling for long trees */
+  max-height: 100%;
+}
+.engineTitle {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #ffffff;
+  text-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff;
+}
+
+.engineSubtitle {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  font-style: italic;
+  color: #cccccc;
+  text-align: center;
+  max-width: 600px;
+}
+
+.enginePrompt {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #aaa;
+}
+
+.startButton {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  background-color: #00bfff;
+  color: #111;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 10px #00bfff;
+  transition: background-color 0.2s ease;
+}
+
+.startButton:hover {
+  background-color: #00aadd;
+}

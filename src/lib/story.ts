@@ -1,8 +1,10 @@
 export type StoryNode = {
   id: string;
-  title: string; // 👈 NEW
+  title: string;
   text: string;
   image?: string;
+  video?: string;
+  audio?: string;
   choices: {
     text: string;
     nextId: string;
@@ -14,7 +16,8 @@ export const story: Record<string, StoryNode> = {
     id: 'start',
     title: 'The Awakening',
     text: 'You wake up in a dark, damp room. The air smells of mold. You hear faint whispers from behind the walls.',
-    image: '/Images/actimel.png',
+    video: '/Videos/teste.mp4',
+    audio: '/Audio/audio.mp3',
     choices: [
       { text: 'joao', nextId: 'joao' },
       { text: 'padre', nextId: 'padre' }

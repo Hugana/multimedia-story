@@ -5,8 +5,8 @@ export default function HomePage() {
   return (
     <>
       <Head>
-        <title>Telltale Story</title>
-        <meta name="description" content="A choose-your-own-adventure story app" />
+        <title>VisioPath</title>
+        <meta name="description" content="Your story, your choices, your world—on the web." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
