@@ -1,40 +1,63 @@
 export type StoryNode = {
-    id: string;
+  id: string;
+  title: string; // 👈 NEW
+  text: string;
+  image?: string;
+  choices: {
     text: string;
-    image?: string;
-    choices: {
-      text: string;
-      nextId: string;
-    }[];
-  };
-  
-  export const story: Record<string, StoryNode> = {
-    start: {
-      id: 'start',
-      text: 'You wake up in a dark, damp room. The air smells of mold. You hear faint whispers from behind the walls.',
-      image: '/Images/actimel.png',
-      choices: [
-        { text: 'Light a candle nearby', nextId: 'joao' },
-        { text: 'Knock on the wall', nextId: 'padre' }
-      ]
-    },
-    joao: {
-      id: 'joao',
-      text: 'The candle illuminates strange symbols written in red across the walls. The whispers grow louder.',
-      image: '/Images/joao.png',
-      choices: [
-        { text: 'Read the symbols aloud', nextId: 'start' },
-        { text: 'Extinguish the candle', nextId: 'padre' }
-      ]
-    },
-    padre: {
-        id: 'padre',
-        text: 'The candle illuminates strange symbols written in red across the walls. The whispers grow louder.',
-        image: '/Images/padre.png',
-        choices: [
-          { text: 'Read the symbols aloud', nextId: 'start' },
-          { text: 'Extinguish the candle', nextId: 'joao' }
-        ]
-      },
-  };
-  
+    nextId: string;
+  }[];
+};
+
+export const story: Record<string, StoryNode> = {
+  start: {
+    id: 'start',
+    title: 'The Awakening',
+    text: 'You wake up in a dark, damp room. The air smells of mold. You hear faint whispers from behind the walls.',
+    image: '/Images/actimel.png',
+    choices: [
+      { text: 'joao', nextId: 'joao' },
+      { text: 'padre', nextId: 'padre' }
+    ]
+  },
+  joao: {
+    id: 'joao',
+    title: 'Symbols on the Wall',
+    text: 'The candle illuminates strange symbols written in red across the walls. The whispers grow louder.',
+    image: '/Images/joao.png',
+    choices: [
+      { text: 'start', nextId: 'start' },
+      { text: 'nova', nextId: 'nova' }
+    ]
+  },
+  padre: {
+    id: 'padre',
+    title: 'The Whispers',
+    text: 'The candle illuminates strange symbols written in red across the walls. The whispers grow louder.',
+    image: '/Images/padre.png',
+    choices: [
+      { text: 'start', nextId: 'start' },
+      { text: 'nova2', nextId: 'nova2' }
+    ]
+  },
+  nova: {
+    id: 'nova',
+    title: 'The Whispers',
+    text: 'The candle illuminates strange symbols written in red across the walls. The whispers grow louder.',
+    image: '/Images/padre.png',
+    choices: [
+      { text: 'start', nextId: 'start' },
+      { text: 'nova2', nextId: 'nova2' }
+    ]
+  },
+  nova2: {
+    id: 'nova2',
+    title: 'The Whispers',
+    text: 'The candle illuminates strange symbols written in red across the walls. The whispers grow louder.',
+    image: '/Images/padre.png',
+    choices: [
+      { text: 'start', nextId: 'start' },
+      { text: 'nova2', nextId: 'nova2' }
+    ]
+  },
+};
