@@ -14,53 +14,49 @@ export type StoryNode = {
 export const story: Record<string, StoryNode> = {
   start: {
     id: 'start',
-    title: 'The Awakening',
-    text: 'You wake up in a dark, damp room. The air smells of mold. You hear faint whispers from behind the walls.',
-    video: '/Videos/teste.mp4',
-    audio: '/Audio/audio.mp3',
+    title: 'In the Beginning',
+    text: 'At the Faculty of Sciences of the University of Lisbon, where the corridors smell of burnt coffee and academic hopelessness, there was something dark going on.',
+    video: '/Videos/Fcul.mp4',
     choices: [
-      { text: 'joao', nextId: 'joao' },
-      { text: 'padre', nextId: 'padre' }
+      { text: 'Next', nextId: 'joao' },
     ]
   },
   joao: {
     id: 'joao',
-    title: 'Symbols on the Wall',
-    text: 'The candle illuminates strange symbols written in red across the walls. The whispers grow louder.',
-    image: '/Images/joao.png',
+    title: 'João Limão',
+    text: 'João Limão, with his revolutionary mane fluttering in the Almada wind, had just received his final exam grade for “Networks of Interdimensional Distributed Systems”: 8.9. Unacceptable. A public humiliation. An ideological betrayal.',
+    image: '/Images/JoaoLimao.png',
     choices: [
-      { text: 'start', nextId: 'start' },
-      { text: 'nova', nextId: 'nova' }
+      { text: 'Next', nextId: 'sofia' },
     ]
   },
-  padre: {
-    id: 'padre',
-    title: 'The Whispers',
-    text: 'The candle illuminates strange symbols written in red across the walls. The whispers grow louder.',
-    image: '/Images/padre.png',
+  sofia: {
+    id: 'sofia',
+    title: 'Sofia the Magician',
+    text: 'Next to her, Sofia “The Magician”, sitting in an inverted lotus position in the middle of the study room, was consulting the spirits of the realm of the dead - the only ones who still knew how Moodle worked. She too had failed. And the spirits were angry.',
+    image: '/Images/sofiaAMaga.png',
     choices: [
-      { text: 'start', nextId: 'start' },
-      { text: 'nova2', nextId: 'nova2' }
+      { text: 'Next', nextId: 'hugo' },
     ]
   },
-  nova: {
-    id: 'nova',
-    title: 'The Whispers',
-    text: 'The candle illuminates strange symbols written in red across the walls. The whispers grow louder.',
-    image: '/Images/padre.png',
+
+  hugo: {
+    id: 'hugo',
+    title: 'Hugo Linux Master',
+    text: 'Hugana, wearing a hoodie with a ninja turtle print and a Linux terminal that was always open, muttered: \n \n This was sabotage... Tito is using evil AI to fix tests... I detected an obscure process called grade_reaper.py.',
+    image: '/Images/HugoLinux.png',
     choices: [
-      { text: 'start', nextId: 'start' },
-      { text: 'nova2', nextId: 'nova2' }
+      { text: 'Next', nextId: '1' },
     ]
   },
-  nova2: {
-    id: 'nova2',
-    title: 'The Whispers',
-    text: 'The candle illuminates strange symbols written in red across the walls. The whispers grow louder.',
-    image: '/Images/padre.png',
+
+  1: {
+    id: '1',
+    title: 'The Reunion',
+    text: 'And that\'s how the three of them decided: they were going to hack Tito\'s system.',
+    image: '/Images/thereunion.png',
     choices: [
-      { text: 'start', nextId: 'start' },
-      { text: 'nova2', nextId: 'nova2' }
+      { text: 'Next', nextId: 'start' },
     ]
   },
 };
