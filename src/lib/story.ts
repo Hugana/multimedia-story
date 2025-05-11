@@ -1,15 +1,20 @@
-export type StoryNode = {
+export interface StoryChoice {
+  text: string;
+  nextId: string;
+  appearDelay?: number;          // Time after which the button appears (ms)
+  visibleDuration?: number | null; // How long it stays visible (null = forever)
+}
+
+export interface StoryNode {
   id: string;
-  title: string;
+  title?: string;
   text: string;
   image?: string;
   video?: string;
   audio?: string;
-  choices: {
-    text: string;
-    nextId: string;
-  }[];
-};
+  choices: StoryChoice[];
+}
+
 
 export const story: Record<string, StoryNode> = {
   start: {
@@ -18,7 +23,12 @@ export const story: Record<string, StoryNode> = {
     text: 'At the Faculty of Sciences of the University of Lisbon, where the corridors smell of burnt coffee and academic hopelessness, there was something dark going on.',
     video: '/Videos/Fcul.mp4',
     choices: [
-      { text: 'Next', nextId: 'joao' },
+      {
+        text: 'Next',
+        nextId: 'joao',
+        appearDelay: 4000,          // appears after 4s
+        visibleDuration: 6000       // visible for 6s
+      },
     ]
   },
   joao: {
@@ -27,7 +37,12 @@ export const story: Record<string, StoryNode> = {
     text: 'João Limão, with his revolutionary mane fluttering in the Almada wind, had just received his final exam grade for “Networks of Interdimensional Distributed Systems”: 8.9. Unacceptable. A public humiliation. An ideological betrayal.',
     image: '/Images/JoaoLimao.png',
     choices: [
-      { text: 'Next', nextId: 'sofia' },
+      {
+        text: 'Next',
+        nextId: 'sofia',
+        appearDelay: 1000,          // appears quickly
+        visibleDuration: null       // stays visible
+      },
     ]
   },
   sofia: {
@@ -36,27 +51,40 @@ export const story: Record<string, StoryNode> = {
     text: 'Next to her, Sofia “The Magician”, sitting in an inverted lotus position in the middle of the study room, was consulting the spirits of the realm of the dead - the only ones who still knew how Moodle worked. She too had failed. And the spirits were angry.',
     image: '/Images/sofiaAMaga.png',
     choices: [
-      { text: 'Next', nextId: 'hugo' },
+      {
+        text: 'Next',
+        nextId: 'hugo',
+        appearDelay: 2000,
+        visibleDuration: null
+      },
     ]
   },
-
   hugo: {
     id: 'hugo',
     title: 'Hugo Linux Master',
-    text: 'Hugana, wearing a hoodie with a ninja turtle print and a Linux terminal that was always open, muttered: \n \n This was sabotage... Tito is using evil AI to fix tests... I detected an obscure process called grade_reaper.py.',
+    text: 'Hugana, wearing a hoodie with a ninja turtle print and a Linux terminal that was always open, muttered: \n\nThis was sabotage... Tito is using evil AI to fix tests... I detected an obscure process called grade_reaper.py.',
     image: '/Images/HugoLinux.png',
     choices: [
-      { text: 'Next', nextId: '1' },
+      {
+        text: 'Next',
+        nextId: '1',
+        appearDelay: 3000,
+        visibleDuration: 8000
+      },
     ]
   },
-
   1: {
     id: '1',
     title: 'The Reunion',
     text: 'And that\'s how the three of them decided: they were going to hack Tito\'s system.',
     image: '/Images/thereunion.png',
     choices: [
-      { text: 'Next', nextId: 'start' },
+      {
+        text: 'Next',
+        nextId: 'start',
+        appearDelay: 2500,
+        visibleDuration: null
+      },
     ]
   },
 };

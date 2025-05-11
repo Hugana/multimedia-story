@@ -11,16 +11,13 @@ export default function HomePage() {
       </Head>
 
       <main style={{
-        minHeight: '100vh',
+        height: '100vh',
+        width: '100vw',
         backgroundColor: '#111',
         color: '#fff',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: '2rem',
         fontFamily: 'sans-serif'
       }}>
-        <div style={{ maxWidth: 700, width: '100%' }}>
+        <div>
           <StoryEngine />
         </div>
       </main>

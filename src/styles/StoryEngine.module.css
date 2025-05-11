@@ -1,25 +1,27 @@
 .storyPanel {
-  background-color: #222;
-  padding: 2rem;
-  border-radius: 12px;
-  flex: 2;
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  background-color: #000;
+  margin-bottom: 10%;
 }
+
+
 
 .storyMediaContainer {
   position: relative;
-  width: 600px;
-  height: 400px;
-  border-radius: 8px;
-  overflow: hidden;
-  margin-bottom: 1rem;
+  flex-grow: 1;
+  width: 100%;
+  height: 100%;
   background-color: #000;
+  overflow: hidden;
 }
 
+
+.storyVideo,
 .storyImage {
-  object-fit: contain;
-}
-
-.storyVideo {
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -27,26 +29,45 @@
 }
 
 .storyText {
-  font-size: 1.3rem;
-  line-height: 1.6;
-  margin-bottom: 2rem;
+  position: absolute;
+  bottom: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  padding: 1rem 2rem;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  border-radius: 12px;
+  color: white;
+  text-align: center;
+  max-width: 80%;
+  text-shadow: 1px 1px 4px #000;
   cursor: pointer;
+  z-index: 2;
 }
 
+
 .choices {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  flex-direction: column;
   gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  z-index: 2;
 }
 
 .choiceButton {
-  padding: 1rem;
+  padding: 0.8rem 1.5rem;
   font-size: 1rem;
-  background-color: #444;
+  background-color: rgba(68, 68, 68, 0.85);
   color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  backdrop-filter: blur(4px);
 }
 
 .choiceButton:hover {
@@ -55,13 +76,13 @@
 
 .treePanel {
   flex: 1;
+  height: 100%;
   background-color: #111;
   padding: 1rem;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  overflow-y: auto;
+  box-sizing: border-box;
 }
+
 
 .treeNodeWrapper {
   position: relative;
@@ -117,13 +138,15 @@
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  margin-bottom: 10px;
 }
 
 .intro {
   color: white;
   text-align: center;
-  padding: 4rem;
+  padding: 18rem;
   display: flex;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
   font-family: UndertaleFont, sans-serif;
@@ -151,16 +174,13 @@
 
 .container {
   display: flex;
-  gap: 2rem;
-  font-family: UndertaleFont, sans-serif;
-  color: white;
-  height: 900px;
-  width: 1000px;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
   overflow: hidden;
-  padding: 2rem;
-  box-sizing: border-box;
+  background-color: #000;
 }
-
 
 .treePanel {
   flex: 1;

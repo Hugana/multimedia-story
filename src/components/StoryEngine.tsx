@@ -22,6 +22,7 @@ const StoryEngine = () => {
   const [rootNode, setRootNode] = useState<PathNode>(() => createNode('start'));
   const [displayedText, setDisplayedText] = useState('');
   const [isAnimating, setIsAnimating] = useState(false);
+  const [visibleChoices, setVisibleChoices] = useState<boolean[]>([]);
   const beep = useRef<Howl | null>(null);
   const narrationAudio = useRef<Howl | null>(null);
   const node: StoryNode = story[currentNode.id];
@@ -34,19 +35,19 @@ const StoryEngine = () => {
 
   useEffect(() => {
     if (!hasStarted) return;
-
+  
     let index = 0;
     setDisplayedText('');
     setIsAnimating(true);
-
+  
     narrationAudio.current?.stop();
     narrationAudio.current = null;
-
+  
     if (node.audio) {
       narrationAudio.current = new Howl({ src: [node.audio], volume: 1.0 });
       narrationAudio.current.play();
     }
-
+  
     const interval = setInterval(() => {
       const char = node.text[index];
       if (char !== undefined) {
@@ -60,12 +61,47 @@ const StoryEngine = () => {
         setIsAnimating(false);
       }
     }, 25);
-
+  
+    // -- Begin: Choice visibility logic --
+    const newVisibilities = node.choices.map(() => false);
+    setVisibleChoices(newVisibilities);
+  
+    const timeouts: NodeJS.Timeout[] = [];
+  
+    node.choices.forEach((choice, i) => {
+      const delay = choice.appearDelay ?? 0;
+      const duration = choice.visibleDuration ?? null;
+  
+      const showTimer = setTimeout(() => {
+        setVisibleChoices((prev) => {
+          const updated = [...prev];
+          updated[i] = true;
+          return updated;
+        });
+      }, delay);
+      timeouts.push(showTimer);
+  
+      if (duration !== null) {
+        const hideTimer = setTimeout(() => {
+          setVisibleChoices((prev) => {
+            const updated = [...prev];
+            updated[i] = false;
+            return updated;
+          });
+        }, delay + duration);
+        timeouts.push(hideTimer);
+      }
+    });
+  
+    // -- End: Choice visibility logic --
+  
     return () => {
       clearInterval(interval);
       narrationAudio.current?.stop();
+      timeouts.forEach(clearTimeout);
     };
   }, [currentNode.id, hasStarted]);
+  
 
   const restartStory = () => {
     const newRoot = createNode('start');
@@ -140,51 +176,51 @@ const StoryEngine = () => {
   return (
     <div className={styles.container}>
       <div className={styles.storyPanel}>
-        {(node.video || node.image) && (
-          <div className={styles.storyMediaContainer}>
-            {node.video ? (
-              <video
-                src={node.video}
-                autoPlay
-                loop
-                muted
-                controls={false}
-                className={styles.storyVideo}
-              />
-            ) : (
-              <Image src={node.image!} alt="Scene" fill className={styles.storyImage} />
-            )}
-          </div>
-        )}
+  <div className={styles.storyMediaContainer}>
+    {node.video ? (
+      <video
+        src={node.video}
+        autoPlay
+        loop
+        muted
+        controls={false}
+        className={styles.storyVideo}
+      />
+    ) : (
+      <Image src={node.image!} alt="Scene" fill className={styles.storyImage} />
+    )}
 
-        <p
-          className={styles.storyText}
-          onClick={() => {
-            if (isAnimating) {
-              setDisplayedText(node.text);
-              setIsAnimating(false);
-            }
-          }}
-        >
-          {displayedText}
-        </p>
+    <p
+      className={styles.storyText}
+      onClick={() => {
+        if (isAnimating) {
+          setDisplayedText(node.text);
+          setIsAnimating(false);
+        }
+      }}
+    >
+      {displayedText}
+    </p>
 
-        <div className={styles.choices}>
-          {node.choices.map((choice, index) => (
-            <button
-              key={index}
-              onClick={() => handleChoice(choice.nextId)}
-              className={styles.choiceButton}
-            >
-              {choice.text}
-            </button>
-          ))}
-        </div>
+    <div className={styles.choices}>
+      {node.choices.map((choice, index) =>
+        visibleChoices[index] ? (
+          <button
+            key={index}
+            onClick={() => handleChoice(choice.nextId)}
+            className={styles.choiceButton}
+          >
+            {choice.text}
+          </button>
+        ) : null
+      )}
+    </div>
+  </div>
 
-        <button onClick={restartStory} className={styles.restartButton}>
-          Start Again
-        </button>
-      </div>
+  <button onClick={restartStory} className={styles.restartButton}>
+    Start Again
+  </button>
+</div>
 
       <div className={styles.treePanel}>
         <h2>Story Tree</h2>
