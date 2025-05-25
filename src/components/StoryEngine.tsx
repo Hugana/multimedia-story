@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
-import { story, StoryNode } from '../lib/story';
+import { story, StoryNode, StoryHotspot } from '../lib/story';
 import { Howl } from 'howler';
 import styles from '../styles/StoryEngine.module.css';
 
@@ -26,7 +26,7 @@ const StoryEngine = () => {
   const beep = useRef<Howl | null>(null);
   const narrationAudio = useRef<Howl | null>(null);
   const node: StoryNode = story[currentNode.id];
-  const [hotspotText, setHotspotText] = useState<string | null>(null);
+  const [activeHotspot, setActiveHotspot] = useState<StoryHotspot | null>(null);
 
 
   useEffect(() => {
@@ -38,8 +38,7 @@ const StoryEngine = () => {
   useEffect(() => {
     if (!hasStarted) return;
   
-    setHotspotText(null);
-
+    setActiveHotspot(null);
     let index = 0;
     setDisplayedText('');
     setIsAnimating(true);
@@ -212,22 +211,32 @@ const StoryEngine = () => {
           key={index}
           className={styles.hotspot}
           style={{
-            position: 'absolute',
+            position: 'relative',
             ...hotspot.area,
             cursor: 'pointer',
             zIndex: 5
           }}
           onClick={() => {
             if (hotspot.nextId) handleChoice(hotspot.nextId);
-            if (hotspot.text) setHotspotText(hotspot.text);
+            if (hotspot.text) setActiveHotspot(hotspot);
           }}
           title={hotspot.label}
         />
       ))}
     
-    {hotspotText && (
-      <div className={styles.hotspotPopup} onClick={() => setHotspotText(null)}>
-        {hotspotText}
+    {activeHotspot && activeHotspot.text && (
+      <div
+        className={styles.hotspotPopup}
+        style={{
+          position: 'absolute',
+          top: activeHotspot.area.top,
+          left: activeHotspot.area.left,
+          zIndex: 10,
+          
+        }}
+        onClick={() => setActiveHotspot(null)}
+      >
+        {activeHotspot.text}
       </div>
     )}
 
