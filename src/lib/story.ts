@@ -21,6 +21,19 @@ export interface StoryNode {
   audio?: string;
   choices: StoryChoice[];
   defaultChoiceId?: string; // <--- NEW: ID of default choice
+  hotspots?: StoryHotspot[];
+}
+
+export interface StoryHotspot {
+  area: {
+    top: string;
+    left: string;
+    width: string;
+    height: string;
+  };
+  label?: string; // for accessibility or tooltip
+  nextId?: string; // optional, to trigger a jump
+  text?: string;   // optional, to show a popup
 }
 
 
@@ -76,7 +89,15 @@ export const story: Record<string, StoryNode> = {
         visibleDuration: null,
         position: { top: '30px', left: '30px' }
       },
-    ]
+    ],
+    hotspots: [
+    {
+      area: { top: '12%', left: '50%', width: '10%', height: '20%' },
+      label: 'Chama da sofia',
+      text: 'Chama da sofia'
+    },
+    
+  ]
   },
   hugo: {
     id: 'hugo',

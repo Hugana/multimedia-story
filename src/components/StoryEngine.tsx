@@ -26,6 +26,8 @@ const StoryEngine = () => {
   const beep = useRef<Howl | null>(null);
   const narrationAudio = useRef<Howl | null>(null);
   const node: StoryNode = story[currentNode.id];
+  const [hotspotText, setHotspotText] = useState<string | null>(null);
+
 
   useEffect(() => {
     if (hasStarted && !beep.current) {
@@ -36,6 +38,8 @@ const StoryEngine = () => {
   useEffect(() => {
     if (!hasStarted) return;
   
+    setHotspotText(null);
+
     let index = 0;
     setDisplayedText('');
     setIsAnimating(true);
@@ -144,6 +148,8 @@ const StoryEngine = () => {
       setRootNode(newRoot);
       setCurrentNode(newNode);
     }
+
+  
   };
 
   const renderTree = (node: PathNode, depth = 0) => (
@@ -200,7 +206,30 @@ const StoryEngine = () => {
             className={`${styles.storyImage}`}
           />
         )}
-
+    
+    {node.hotspots?.map((hotspot, index) => (
+        <div
+          key={index}
+          className={styles.hotspot}
+          style={{
+            position: 'absolute',
+            ...hotspot.area,
+            cursor: 'pointer',
+            zIndex: 5
+          }}
+          onClick={() => {
+            if (hotspot.nextId) handleChoice(hotspot.nextId);
+            if (hotspot.text) setHotspotText(hotspot.text);
+          }}
+          title={hotspot.label}
+        />
+      ))}
+    
+    {hotspotText && (
+      <div className={styles.hotspotPopup} onClick={() => setHotspotText(null)}>
+        {hotspotText}
+      </div>
+    )}
 
     <p
       className={styles.storyText}

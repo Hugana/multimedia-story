@@ -259,3 +259,27 @@
   font-weight: bold;
   animation: blink 1s infinite;
 }
+
+.hotspot {
+  background-color: rgba(255, 255, 255, 0); /* fully transparent */
+  border: none;
+}
+
+.hotspot:hover {
+  background-color: rgba(255, 255, 255, 0.05); /* very subtle hover */
+}
+
+.hotspotPopup {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  padding: 1rem 2rem;
+  color: white;
+  border-radius: 10px;
+  z-index: 20;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
