@@ -202,19 +202,23 @@ const StoryEngine = () => {
       {displayedText}
     </p>
 
-    <div className={styles.choices}>
-      {node.choices.map((choice, index) =>
-        visibleChoices[index] ? (
-          <button
-            key={index}
-            onClick={() => handleChoice(choice.nextId)}
-            className={styles.choiceButton}
-          >
-            {choice.text}
-          </button>
-        ) : null
-      )}
-    </div>
+    {node.choices.map((choice, index) =>
+  visibleChoices[index] ? (
+    <button
+      key={index}
+      onClick={() => handleChoice(choice.nextId)}
+      className={styles.choiceButton}
+      style={{
+        position: 'absolute',
+        ...choice.position,
+        zIndex: 10
+      }}
+    >
+      {choice.text}
+    </button>
+  ) : null
+)}
+
   </div>
 
   <button onClick={restartStory} className={styles.restartButton}>

@@ -1,9 +1,16 @@
 export interface StoryChoice {
   text: string;
   nextId: string;
-  appearDelay?: number;          // Time after which the button appears (ms)
-  visibleDuration?: number | null; // How long it stays visible (null = forever)
+  appearDelay?: number;
+  visibleDuration?: number | null;
+  position?: {
+    top?: string;
+    bottom?: string;
+    left?: string;
+    right?: string;
+  };
 }
+
 
 export interface StoryNode {
   id: string;
@@ -24,10 +31,18 @@ export const story: Record<string, StoryNode> = {
     video: '/Videos/Fcul.mp4',
     choices: [
       {
-        text: 'Next',
+        text: 'Joao',
         nextId: 'joao',
-        appearDelay: 4000,          // appears after 4s
-        visibleDuration: 6000       // visible for 6s
+        appearDelay: 4000,
+        visibleDuration: null,
+        position: { top: '50%', right: '10%' }
+      },
+      {
+        text: 'Sofia',
+        nextId: 'sofia',
+        appearDelay: 4000,
+        visibleDuration: null,
+        position: { top: '10%', right: '50%' }
       },
     ]
   },
@@ -40,8 +55,9 @@ export const story: Record<string, StoryNode> = {
       {
         text: 'Next',
         nextId: 'sofia',
-        appearDelay: 1000,          // appears quickly
-        visibleDuration: null       // stays visible
+        appearDelay: 1000,
+        visibleDuration: null,
+        position: { top: '30px', right: '30px' }
       },
     ]
   },
@@ -55,7 +71,8 @@ export const story: Record<string, StoryNode> = {
         text: 'Next',
         nextId: 'hugo',
         appearDelay: 2000,
-        visibleDuration: null
+        visibleDuration: null,
+        position: { top: '30px', left: '30px' }
       },
     ]
   },
@@ -69,7 +86,8 @@ export const story: Record<string, StoryNode> = {
         text: 'Next',
         nextId: '1',
         appearDelay: 3000,
-        visibleDuration: 8000
+        visibleDuration: 8000,
+        position: { bottom: '30px', left: '50%' } // center bottom
       },
     ]
   },
@@ -83,8 +101,10 @@ export const story: Record<string, StoryNode> = {
         text: 'Next',
         nextId: 'start',
         appearDelay: 2500,
-        visibleDuration: null
+        visibleDuration: null,
+        position: { top: '20px', left: '50%' } // center top
       },
     ]
   },
 };
+
