@@ -154,6 +154,7 @@ const StoryEngine = () => {
       >
         {story[node.id]?.title || node.id}
       </div>
+
       <div className={styles.childrenContainer}>
         {node.children.map((child) => renderTree(child, depth + 1))}
       </div>
@@ -181,10 +182,15 @@ const StoryEngine = () => {
           <video
             src={node.video}
             autoPlay
-            loop
+            loop={false}
             muted
             controls={false}
             className={`${styles.storyVideo}`}
+            onEnded={() => {
+              if (node.defaultChoiceId) {
+                handleChoice(node.defaultChoiceId);
+              }
+            }}
           />
         ) : (
           <Image

@@ -248,3 +248,14 @@
   animation: fadeInSlideUp 1.5s ease-out both;
 }
 
+@keyframes blink {
+  0% { background-color: #555; }
+  50% { background-color: #777; }
+  100% { background-color: #555; }
+}
+
+.current {
+  background-color: #555;
+  font-weight: bold;
+  animation: blink 1s infinite;
+}

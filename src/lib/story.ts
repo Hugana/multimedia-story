@@ -20,6 +20,7 @@ export interface StoryNode {
   video?: string;
   audio?: string;
   choices: StoryChoice[];
+  defaultChoiceId?: string; // <--- NEW: ID of default choice
 }
 
 
@@ -29,6 +30,7 @@ export const story: Record<string, StoryNode> = {
     title: 'In the Beginning',
     text: 'At the Faculty of Sciences of the University of Lisbon, where the corridors smell of burnt coffee and academic hopelessness, there was something dark going on.',
     video: '/Videos/Fcul.mp4',
+    defaultChoiceId: 'joao',
     choices: [
       {
         text: 'Joao',
