@@ -176,19 +176,25 @@ const StoryEngine = () => {
   return (
     <div className={styles.container}>
       <div className={styles.storyPanel}>
-  <div className={styles.storyMediaContainer}>
-    {node.video ? (
-      <video
-        src={node.video}
-        autoPlay
-        loop
-        muted
-        controls={false}
-        className={styles.storyVideo}
-      />
-    ) : (
-      <Image src={node.image!} alt="Scene" fill className={styles.storyImage} />
-    )}
+        <div key={currentNode.id} className={`${styles.storyMediaContainer} ${styles.fadeInSlideUp}`}>
+        {node.video ? (
+          <video
+            src={node.video}
+            autoPlay
+            loop
+            muted
+            controls={false}
+            className={`${styles.storyVideo}`}
+          />
+        ) : (
+          <Image
+            src={node.image!}
+            alt="Scene"
+            fill
+            className={`${styles.storyImage}`}
+          />
+        )}
+
 
     <p
       className={styles.storyText}
