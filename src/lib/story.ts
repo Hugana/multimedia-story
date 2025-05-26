@@ -11,6 +11,17 @@ export interface StoryChoice {
   };
 }
 
+export interface StoryHotspot {
+  area: {
+    top: string;
+    left: string;
+    width: string;
+    height: string;
+  };
+  label?: string;
+  nextId?: string;
+  text?: string;
+}
 
 export interface StoryNode {
   id: string;
@@ -20,22 +31,9 @@ export interface StoryNode {
   video?: string;
   audio?: string;
   choices: StoryChoice[];
-  defaultChoiceId?: string; // <--- NEW: ID of default choice
+  defaultChoiceId?: string;
   hotspots?: StoryHotspot[];
 }
-
-export interface StoryHotspot {
-  area: {
-    top: string;
-    left: string;
-    width: string;
-    height: string;
-  };
-  label?: string; // for accessibility or tooltip
-  nextId?: string; // optional, to trigger a jump
-  text?: string;   // optional, to show a popup
-}
-
 
 export const story: Record<string, StoryNode> = {
   start: {
@@ -43,48 +41,41 @@ export const story: Record<string, StoryNode> = {
     title: 'In the Beginning',
     text: 'At the Faculty of Sciences of the University of Lisbon, where the corridors smell of burnt coffee and academic hopelessness, there was something dark going on.',
     video: '/Videos/Fcul.mp4',
-    defaultChoiceId: 'joao',
-    choices: [
-      {
-        text: 'Joao',
-        nextId: 'joao',
-        appearDelay: 4000,
-        visibleDuration: null,
-        position: { top: '50%', right: '10%' }
-      },
-      {
-        text: 'Sofia',
-        nextId: 'sofia',
-        appearDelay: 4000,
-        visibleDuration: null,
-        position: { top: '10%', right: '50%' }
-      },
-    ]
-  },
-  joao: {
-    id: 'joao',
-    title: 'João Limão',
-    text: 'João Limão, with his revolutionary mane fluttering in the Almada wind, had just received his final exam grade for “Networks of Interdimensional Distributed Systems”: 8.9. Unacceptable. A public humiliation. An ideological betrayal.',
-    image: '/Images/JoaoLimao.png',
+    defaultChoiceId: 'EvilProfessor',
     choices: [
       {
         text: 'Next',
-        nextId: 'sofia',
-        appearDelay: 1000,
+        nextId: 'EvilProfessor',
+        appearDelay: 4000,
         visibleDuration: null,
-        position: { top: '30px', right: '30px' }
+        position: { top: '10%', right: '45%' }
+      },
+    ]
+  },
+  EvilProfessor: {
+    id: 'EvilProfessor',
+    title: 'The Evil Professor',
+    text: 'The evil professor...',
+    image: '/Images/EvilProfessor.png',
+    choices: [
+      {
+        text: 'next',
+        nextId: 'sofia',
+        appearDelay: 2000,
+        visibleDuration: null,
+        position: { top: '30px', left: '30px' }
       },
     ]
   },
   sofia: {
     id: 'sofia',
     title: 'Sofia the Magician',
-    text: 'Next to her, Sofia “The Magician”, sitting in an inverted lotus position in the middle of the study room, was consulting the spirits of the realm of the dead - the only ones who still knew how Moodle worked. She too had failed. And the spirits were angry.',
+    text: 'Sofia “The Magician”, sitting in an inverted lotus position in the middle of the study room, was consulting the spirits of the realm of the dead - the only ones who still knew how Moodle worked. She too had failed. And the spirits were angry.',
     image: '/Images/sofiaAMaga.png',
     choices: [
       {
         text: 'Next',
-        nextId: 'hugo',
+        nextId: 'joao',
         appearDelay: 2000,
         visibleDuration: null,
         position: { top: '30px', left: '30px' }
@@ -93,8 +84,8 @@ export const story: Record<string, StoryNode> = {
     hotspots: [
     {
       area: { top: '12%', left: '50%', width: '10%', height: '20%' },
-      label: 'Chama da sofia',
-      text: 'Chama da sofia'
+      label: 'Sofia\'s flame',
+      text: 'Powers of the undead',
     },
     
   ]
@@ -108,16 +99,31 @@ export const story: Record<string, StoryNode> = {
       {
         text: 'Next',
         nextId: '1',
-        appearDelay: 3000,
-        visibleDuration: 8000,
-        position: { bottom: '30px', left: '50%' } // center bottom
+        appearDelay: 2000,
+        visibleDuration: null,
+        position: { top: '30px', left: '30px' }
+      },
+    ]
+  },
+   joao: {
+    id: 'joao',
+    title: 'João Limão',
+    text: 'João Limão, with his revolutionary mane fluttering in the Almada wind, had just received his final exam grade for “Networks of Interdimensional Distributed Systems”: 8.9. Unacceptable. A public humiliation. An ideological betrayal.',
+    image: '/Images/JoaoLimao.png',
+    choices: [
+      {
+        text: 'Next',
+        nextId: 'hugo',
+        appearDelay: 2000,
+        visibleDuration: null,
+        position: { top: '30px', left: '30px' }
       },
     ]
   },
   1: {
     id: '1',
     title: 'The Reunion',
-    text: 'And that\'s how the three of them decided: they were going to hack Tito\'s system.',
+    text: 'Due to the evil plans of Tito the three of them decided: they were going to hack Tito\'s system.',
     image: '/Images/thereunion.png',
     choices: [
       {
