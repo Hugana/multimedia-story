@@ -105,19 +105,23 @@
 
 .childrenContainer {
   display: flex;
-  gap: 1rem;
-  margin-top: 0.5rem;
+  flex-direction: row; /* Arrange child nodes horizontally */
   flex-wrap: wrap;
   justify-content: center;
+  gap: 0.5rem; /* Space between sibling nodes */
+  margin-top: 0.5rem;
 }
 
 .nodeBox {
+  font-size: 0.50rem;         /* Smaller text */
+  padding: 0.2rem 0.5rem;     /* Smaller padding */
+  border-radius: 6px;
   background-color: #333;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  text-align: center;
   cursor: pointer;
   transition: background-color 0.2s;
+  max-width: 120px;
+  text-align: center;
+  word-wrap: break-word;
 }
 
 .nodeBox:hover {
