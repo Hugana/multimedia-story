@@ -28,29 +28,32 @@ const StoryEngine = () => {
   const node: StoryNode = story[currentNode.id];
   const [activeHotspot, setActiveHotspot] = useState<StoryHotspot | null>(null);
 
-
-  useEffect(() => {
-    if (hasStarted && !beep.current) {
-      beep.current = new Howl({ src: ['/sounds/beeps.mp3'], volume: 0.15 });
-    }
-  }, [hasStarted]);
-
   useEffect(() => {
     if (!hasStarted) return;
-  
+
     setActiveHotspot(null);
     let index = 0;
     setDisplayedText('');
     setIsAnimating(true);
-  
+
     narrationAudio.current?.stop();
     narrationAudio.current = null;
-  
+
     if (node.audio) {
-      narrationAudio.current = new Howl({ src: [node.audio], volume: 1.0 });
+      narrationAudio.current = new Howl({
+        src: [node.audio],
+        volume: node.audioVolume ?? 1.0,
+        loop: node.audioLoop ?? false,
+      });
       narrationAudio.current.play();
+
+      if (node.audioDuration) {
+        setTimeout(() => {
+          narrationAudio.current?.stop();
+        }, node.audioDuration);
+      }
     }
-  
+
     const interval = setInterval(() => {
       const char = node.text[index];
       if (char !== undefined) {
@@ -64,17 +67,17 @@ const StoryEngine = () => {
         setIsAnimating(false);
       }
     }, 25);
-  
+
     // -- Begin: Choice visibility logic --
     const newVisibilities = node.choices.map(() => false);
     setVisibleChoices(newVisibilities);
-  
+
     const timeouts: NodeJS.Timeout[] = [];
-  
+
     node.choices.forEach((choice, i) => {
       const delay = choice.appearDelay ?? 0;
       const duration = choice.visibleDuration ?? null;
-  
+
       const showTimer = setTimeout(() => {
         setVisibleChoices((prev) => {
           const updated = [...prev];
@@ -83,7 +86,7 @@ const StoryEngine = () => {
         });
       }, delay);
       timeouts.push(showTimer);
-  
+
       if (duration !== null) {
         const hideTimer = setTimeout(() => {
           setVisibleChoices((prev) => {
@@ -95,16 +98,16 @@ const StoryEngine = () => {
         timeouts.push(hideTimer);
       }
     });
-  
+
     // -- End: Choice visibility logic --
-  
+
     return () => {
       clearInterval(interval);
       narrationAudio.current?.stop();
       timeouts.forEach(clearTimeout);
     };
   }, [currentNode.id, hasStarted]);
-  
+
 
   const restartStory = () => {
     const newRoot = createNode('start');
@@ -148,7 +151,7 @@ const StoryEngine = () => {
       setCurrentNode(newNode);
     }
 
-  
+
   };
 
   const renderTree = (node: PathNode, depth = 0) => (
@@ -183,98 +186,98 @@ const StoryEngine = () => {
     <div className={styles.container}>
       <div className={styles.storyPanel}>
         <div key={currentNode.id} className={`${styles.storyMediaContainer} ${styles.fadeInSlideUp}`}>
-        {node.video ? (
-          <video
-            src={node.video}
-            autoPlay
-            loop={false}
-            muted
-            controls={false}
-            className={`${styles.storyVideo}`}
-            onEnded={() => {
-              if (node.defaultChoiceId) {
-                handleChoice(node.defaultChoiceId);
+          {node.video ? (
+            <video
+              src={node.video}
+              autoPlay
+              loop={false}
+              muted
+              controls={false}
+              className={`${styles.storyVideo}`}
+              onEnded={() => {
+                if (node.defaultChoiceId) {
+                  handleChoice(node.defaultChoiceId);
+                }
+              }}
+            />
+          ) : (
+            <Image
+              src={node.image!}
+              alt="Scene"
+              fill
+              className={`${styles.storyImage}`}
+            />
+          )}
+
+          {node.hotspots?.map((hotspot, index) => (
+            <div
+              key={index}
+              className={styles.hotspot}
+              style={{
+                position: 'relative',
+                ...hotspot.area,
+                cursor: 'pointer',
+                zIndex: 5
+              }}
+              onClick={() => {
+                if (hotspot.nextId) handleChoice(hotspot.nextId);
+                if (hotspot.text) setActiveHotspot(hotspot);
+              }}
+              title={hotspot.label}
+            />
+          ))}
+
+          {activeHotspot && activeHotspot.text && (
+            <div
+              className={styles.hotspotPopup}
+              style={{
+                position: 'absolute',
+                top: activeHotspot.area.top,
+                left: activeHotspot.area.left,
+                zIndex: 10,
+
+              }}
+              onClick={() => setActiveHotspot(null)}
+            >
+              {activeHotspot.text}
+            </div>
+          )}
+
+          <p
+            className={styles.storyText}
+            onClick={() => {
+              if (isAnimating) {
+                setDisplayedText(node.text);
+                setIsAnimating(false);
               }
             }}
-          />
-        ) : (
-          <Image
-            src={node.image!}
-            alt="Scene"
-            fill
-            className={`${styles.storyImage}`}
-          />
-        )}
-    
-    {node.hotspots?.map((hotspot, index) => (
-        <div
-          key={index}
-          className={styles.hotspot}
-          style={{
-            position: 'relative',
-            ...hotspot.area,
-            cursor: 'pointer',
-            zIndex: 5
-          }}
-          onClick={() => {
-            if (hotspot.nextId) handleChoice(hotspot.nextId);
-            if (hotspot.text) setActiveHotspot(hotspot);
-          }}
-          title={hotspot.label}
-        />
-      ))}
-    
-    {activeHotspot && activeHotspot.text && (
-      <div
-        className={styles.hotspotPopup}
-        style={{
-          position: 'absolute',
-          top: activeHotspot.area.top,
-          left: activeHotspot.area.left,
-          zIndex: 10,
-          
-        }}
-        onClick={() => setActiveHotspot(null)}
-      >
-        {activeHotspot.text}
+          >
+            {displayedText}
+          </p>
+
+          {node.choices.map((choice, index) =>
+            visibleChoices[index] ? (
+              <button
+                key={index}
+                onClick={() => handleChoice(choice.nextId)}
+                className={styles.choiceButton}
+                style={{
+                  position: 'absolute',
+                  ...choice.position,
+                  zIndex: 10
+                }}
+              >
+                {choice.text}
+              </button>
+            ) : null
+          )}
+
+        </div>
+
+        <button onClick={restartStory} className={styles.restartButton}>
+          Start Again
+        </button>
       </div>
-    )}
-
-    <p
-      className={styles.storyText}
-      onClick={() => {
-        if (isAnimating) {
-          setDisplayedText(node.text);
-          setIsAnimating(false);
-        }
-      }}
-    >
-      {displayedText}
-    </p>
-
-    {node.choices.map((choice, index) =>
-  visibleChoices[index] ? (
-    <button
-      key={index}
-      onClick={() => handleChoice(choice.nextId)}
-      className={styles.choiceButton}
-      style={{
-        position: 'absolute',
-        ...choice.position,
-        zIndex: 10
-      }}
-    >
-      {choice.text}
-    </button>
-  ) : null
-)}
-
-  </div>
-
-  <button onClick={restartStory} className={styles.restartButton}>
-    Start Again
-  </button>
-</div>
 
       <div className={styles.treePanel}>
         <h2>Story Tree</h2>

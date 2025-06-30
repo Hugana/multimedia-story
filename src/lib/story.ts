@@ -30,6 +30,9 @@ export interface StoryNode {
   image?: string;
   video?: string;
   audio?: string;
+  audioVolume?: number;      // volume entre 0.0 e 1.0
+  audioDuration?: number;    // duração em milissegundos
+  audioLoop?: boolean;
   choices: StoryChoice[];
   defaultChoiceId?: string;
   hotspots?: StoryHotspot[];
@@ -41,6 +44,9 @@ export const story: Record<string, StoryNode> = {
     title: 'In the Beginning',
     text: 'At the Faculty of Sciences of the University of Lisbon, where the corridors smell of burnt coffee and academic hopelessness, there was something dark going on.',
     video: '/Videos/Fcul.mp4',
+    audio: '/sounds/university.mp3',
+    audioVolume: 0.5,             
+    audioLoop: true, 
     defaultChoiceId: 'EvilProfessor',
     choices: [
       {
@@ -57,6 +63,9 @@ export const story: Record<string, StoryNode> = {
     title: 'The Evil Professor',
     text: 'Tito the evil professor using an AI to deliberate rate the students with 9.4 on the subject of “Networks of Interdimensional Distributed Systems”.',
     image: '/Images/EvilProfessor.png',
+    audio: '/sounds/evil-professor.mp3',
+    audioVolume: 0.2,             
+    audioLoop: true,        
     choices: [
       {
         text: 'next',
@@ -72,6 +81,9 @@ export const story: Record<string, StoryNode> = {
     title: 'Sofia the Magician',
     text: 'Sofia “The Magician”, sitting in an inverted lotus position in the middle of the study room, was consulting the spirits of the realm of the dead - the only ones who still knew how Moodle worked. She too had failed. And the spirits were angry.',
     image: '/Images/sofiaAMaga.png',
+    audio: '/sounds/sofia-sound.mp3',
+    audioVolume: 0.2,             
+    audioLoop: true,   
     choices: [
       {
         text: 'Next',
@@ -95,6 +107,9 @@ export const story: Record<string, StoryNode> = {
     title: 'Hugo Linux Master',
     text: 'Hugana, wearing a hoodie with a ninja turtle print and a Linux terminal that was always open, muttered: \n\nThis was sabotage... Tito is using evil AI to fix tests... I detected an obscure process called grade_reaper.py.',
     image: '/Images/HugoLinux.png',
+    audio: '/sounds/hugana.mp3',
+    audioVolume: 0.1,             
+    audioLoop: true, 
     choices: [
       {
         text: 'Next',
@@ -110,6 +125,9 @@ export const story: Record<string, StoryNode> = {
     title: 'João Limão',
     text: 'João Limão, with his revolutionary mane fluttering in the Almada wind, had just received his final exam grade for “Networks of Interdimensional Distributed Systems”: 9.4. Unacceptable. A public humiliation. An ideological betrayal.',
     image: '/Images/JoaoLimao.png',
+    audio: '/sounds/joao.mp3',
+    audioVolume: 0.1,             
+    audioLoop: true,
     choices: [
       {
         text: 'Next', 
@@ -125,6 +143,9 @@ export const story: Record<string, StoryNode> = {
     title: 'The Reunion',
     text: 'Due to the evil plans of Tito the three of them decided: they were going to hack Tito\'s system.',
     image: '/Images/thereunion.png',
+    audio: '/sounds/reunion.mp3',
+    audioVolume: 0.5,             
+    audioLoop: true,   
     choices: [
       {
         text: 'Next',
@@ -140,6 +161,9 @@ export const story: Record<string, StoryNode> = {
     title: 'The First Challenge',
     text: 'Our heroes arrive at the door of Room R. There are sensors, a keypad with thermal recognition and... a handwritten sign \n (Make the correct choice)',
     image: '/Images/ChoiceDoor.png',
+    audio: '/sounds/first-challenge.mp3',
+    audioVolume: 0.1,             
+    audioLoop: true,   
     choices: [
       {
         text: 'Sofia',
@@ -169,6 +193,9 @@ export const story: Record<string, StoryNode> = {
     title: 'Sofia casts a spell',
     text: 'Sofia cast\'s a spell to disguice her friends to appear like students that have 20',
     image: '/Images/ChoiceDoorSofia1.png',
+    audio: '/sounds/spell.mp3',
+    audioVolume: 0.1,             
+    audioLoop: true,  
     choices: [
       {
         text: 'Next',
@@ -184,6 +211,9 @@ export const story: Record<string, StoryNode> = {
     title: 'Evil Spirit Challenge',
     text: 'Sofia spell was not strong enough and the door was protected with black magic, summoning the evil professor in spirit form',
     image: '/Images/ChoiceDoorSofia2.png',
+    audio: '/sounds/demon.mp3',
+    audioVolume: 0.1,             
+    audioLoop: true, 
     choices: [
       {
         text: 'Wrong Choice, Repeat the Challenge',
@@ -199,6 +229,9 @@ export const story: Record<string, StoryNode> = {
     title: 'Joao grabs the crowbar and a wine bottle',
     text: 'Joao gets himself a crowbar and a wine bottle and says :"This needs to be breached with pure strenght".',
     image: '/Images/ChoiceDoorJoao1.png',
+    audio: '/sounds/glass-breaking.mp3',
+    audioVolume: 0.1,             
+    audioLoop: true,  
     choices: [
       {
         text: 'Next',
@@ -214,6 +247,9 @@ export const story: Record<string, StoryNode> = {
     title: 'Joao grabs the crowbar and a wine bottle',
     text: 'Joao tried to break the lock of the door but the door has too strong and he ended up pooping himself..',
     image: '/Images/ChoiceDoorJoao2.png',
+    audio: '/sounds/fart.mp3',
+    audioVolume: 0.1,             
+    audioLoop: true, 
     choices: [
       {
         text: 'Wrong Choice, Repeat the Challenge',
@@ -229,6 +265,9 @@ export const story: Record<string, StoryNode> = {
     title: 'Super Linux Programmer Mode',
     text: 'Hugo gathers his strenght and goes into "Super Programmer Linux Mode" and starts typing ultra fast executing the OpenSezame.py program.',
     image: '/Images/ChoiceDoorHugo1.png',
+    audio: '/sounds/power-up.mp3',
+    audioVolume: 0.1,             
+    audioLoop: true, 
     choices: [
       {
         text: 'Next',
@@ -244,6 +283,9 @@ export const story: Record<string, StoryNode> = {
     title: 'The Door opens',
     text: 'The door open and Hugo is drained after that huge effort',
     image: '/Images/ChoiceDoorHugo2.png',
+    audio: '/sounds/door-opening.mp3',
+    audioVolume: 0.4,             
+    audioLoop: true,
     choices: [
       {
         text: 'Great Job! Next',
@@ -257,8 +299,11 @@ export const story: Record<string, StoryNode> = {
   EvilProfessorGabinetChallenge: {
     id: 'EvilProfessorGabinetChallenge',
     title: 'The Gabinet',
-    text: '(Optain information about the professor and when ready click on the computer)',
+    text: '(Obtain information about the professor and when ready click on the computer)',
     image: '/Images/EvilProfessorGabinet.png',
+    audio: 'sounds/dramatic-sound.mp3',
+    audioVolume: 0.2,             
+    audioLoop: true,
     choices: [],
     hotspots: [
     {
