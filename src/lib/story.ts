@@ -45,8 +45,8 @@ export const story: Record<string, StoryNode> = {
     text: 'At the Faculty of Sciences of the University of Lisbon, where the corridors smell of burnt coffee and academic hopelessness, there was something dark going on.',
     video: '/Videos/Fcul.mp4',
     audio: '/sounds/university.mp3',
-    audioVolume: 0.5,             
-    audioLoop: true, 
+    audioVolume: 0.5,
+    audioLoop: true,
     defaultChoiceId: 'EvilProfessor',
     choices: [
       {
@@ -64,11 +64,11 @@ export const story: Record<string, StoryNode> = {
     text: 'Tito the evil professor using an AI to deliberate rate the students with 9.4 on the subject of “Networks of Interdimensional Distributed Systems”.',
     image: '/Images/EvilProfessor.png',
     audio: '/sounds/evil-professor.mp3',
-    audioVolume: 0.2,             
-    audioLoop: true,        
+    audioVolume: 0.2,
+    audioLoop: true,
     choices: [
       {
-        text: 'next',
+        text: 'Next',
         nextId: 'sofia',
         appearDelay: 2000,
         visibleDuration: null,
@@ -82,8 +82,8 @@ export const story: Record<string, StoryNode> = {
     text: 'Sofia “The Magician”, sitting in an inverted lotus position in the middle of the study room, was consulting the spirits of the realm of the dead - the only ones who still knew how Moodle worked. She too had failed. And the spirits were angry.',
     image: '/Images/sofiaAMaga.png',
     audio: '/sounds/sofia-sound.mp3',
-    audioVolume: 0.2,             
-    audioLoop: true,   
+    audioVolume: 0.2,
+    audioLoop: true,
     choices: [
       {
         text: 'Next',
@@ -94,13 +94,13 @@ export const story: Record<string, StoryNode> = {
       },
     ],
     hotspots: [
-    {
-      area: { top: '12%', left: '50%', width: '10%', height: '20%' },
-      label: 'Sofia\'s flame',
-      text: 'Powers of the undead',
-    },
-    
-  ]
+      {
+        area: { top: '12%', left: '50%', width: '10%', height: '20%' },
+        label: 'Sofia\'s flame',
+        text: 'Powers of the undead',
+      },
+
+    ]
   },
   hugo: {
     id: 'hugo',
@@ -108,8 +108,8 @@ export const story: Record<string, StoryNode> = {
     text: 'Hugana, wearing a hoodie with a ninja turtle print and a Linux terminal that was always open, muttered: \n\nThis was sabotage... Tito is using evil AI to fix tests... I detected an obscure process called grade_reaper.py.',
     image: '/Images/HugoLinux.png',
     audio: '/sounds/hugana.mp3',
-    audioVolume: 0.1,             
-    audioLoop: true, 
+    audioVolume: 0.1,
+    audioLoop: true,
     choices: [
       {
         text: 'Next',
@@ -120,17 +120,17 @@ export const story: Record<string, StoryNode> = {
       },
     ]
   },
-   joao: {
+  joao: {
     id: 'joao',
     title: 'João Limão',
     text: 'João Limão, with his revolutionary mane fluttering in the Almada wind, had just received his final exam grade for “Networks of Interdimensional Distributed Systems”: 9.4. Unacceptable. A public humiliation. An ideological betrayal.',
     image: '/Images/JoaoLimao.png',
     audio: '/sounds/joao.mp3',
-    audioVolume: 0.1,             
+    audioVolume: 0.1,
     audioLoop: true,
     choices: [
       {
-        text: 'Next', 
+        text: 'Next',
         nextId: 'hugo',
         appearDelay: 2000,
         visibleDuration: null,
@@ -144,8 +144,8 @@ export const story: Record<string, StoryNode> = {
     text: 'Due to the evil plans of Tito the three of them decided: they were going to hack Tito\'s system.',
     image: '/Images/thereunion.png',
     audio: '/sounds/reunion.mp3',
-    audioVolume: 0.5,             
-    audioLoop: true,   
+    audioVolume: 0.5,
+    audioLoop: true,
     choices: [
       {
         text: 'Next',
@@ -162,8 +162,8 @@ export const story: Record<string, StoryNode> = {
     text: 'Our heroes arrive at the door of Room R. There are sensors, a keypad with thermal recognition and... a handwritten sign \n (Make the correct choice)',
     image: '/Images/ChoiceDoor.png',
     audio: '/sounds/first-challenge.mp3',
-    audioVolume: 0.1,             
-    audioLoop: true,   
+    audioVolume: 0.1,
+    audioLoop: true,
     choices: [
       {
         text: 'Sofia',
@@ -171,21 +171,21 @@ export const story: Record<string, StoryNode> = {
         appearDelay: 100,
         visibleDuration: null,
         position: { top: '20%', right: '57%' }
-      },  
+      },
       {
         text: 'Hugo',
         nextId: 'ChoiceDoorHugo1',
         appearDelay: 100,
         visibleDuration: null,
         position: { top: '16%', right: '67%' }
-      },   
+      },
       {
         text: 'João',
         nextId: 'ChoiceDoorJoao1',
         appearDelay: 100,
         visibleDuration: null,
         position: { top: '12%', right: '26%' }
-      },    
+      },
     ]
   },
   ChoiceDoorSofia1: {
@@ -194,8 +194,8 @@ export const story: Record<string, StoryNode> = {
     text: 'Sofia cast\'s a spell to disguice her friends to appear like students that have 20',
     image: '/Images/ChoiceDoorSofia1.png',
     audio: '/sounds/spell.mp3',
-    audioVolume: 0.1,             
-    audioLoop: true,  
+    audioVolume: 0.1,
+    audioLoop: true,
     choices: [
       {
         text: 'Next',
@@ -212,8 +212,8 @@ export const story: Record<string, StoryNode> = {
     text: 'Sofia spell was not strong enough and the door was protected with black magic, summoning the evil professor in spirit form',
     image: '/Images/ChoiceDoorSofia2.png',
     audio: '/sounds/demon.mp3',
-    audioVolume: 0.1,             
-    audioLoop: true, 
+    audioVolume: 0.1,
+    audioLoop: true,
     choices: [
       {
         text: 'Wrong Choice, Repeat the Challenge',
@@ -230,8 +230,8 @@ export const story: Record<string, StoryNode> = {
     text: 'Joao gets himself a crowbar and a wine bottle and says :"This needs to be breached with pure strenght".',
     image: '/Images/ChoiceDoorJoao1.png',
     audio: '/sounds/glass-breaking.mp3',
-    audioVolume: 0.1,             
-    audioLoop: true,  
+    audioVolume: 0.1,
+    audioLoop: true,
     choices: [
       {
         text: 'Next',
@@ -248,8 +248,8 @@ export const story: Record<string, StoryNode> = {
     text: 'Joao tried to break the lock of the door but the door has too strong and he ended up pooping himself..',
     image: '/Images/ChoiceDoorJoao2.png',
     audio: '/sounds/fart.mp3',
-    audioVolume: 0.1,             
-    audioLoop: true, 
+    audioVolume: 0.1,
+    audioLoop: true,
     choices: [
       {
         text: 'Wrong Choice, Repeat the Challenge',
@@ -266,8 +266,26 @@ export const story: Record<string, StoryNode> = {
     text: 'Hugo gathers his strenght and goes into "Super Programmer Linux Mode" and starts typing ultra fast executing the OpenSezame.py program.',
     image: '/Images/ChoiceDoorHugo1.png',
     audio: '/sounds/power-up.mp3',
-    audioVolume: 0.1,             
-    audioLoop: true, 
+    audioVolume: 0.1,
+    audioLoop: true,
+    choices: [
+      {
+        text: 'Next',
+        nextId: 'ChoiceDoorHugo3',
+        appearDelay: 2000,
+        visibleDuration: null,
+        position: { top: '30px', left: '30px' }
+      },
+    ]
+  },
+  ChoiceDoorHugo3: {
+    id: 'ChoiceDoorHugo3',
+    title: 'Hugo programming',
+    text: '',
+    video: '/Videos/hugo3.mp4',
+    audio: '/sounds/climax.mp3',
+    audioVolume: 0.4,
+    audioLoop: true,
     choices: [
       {
         text: 'Next',
@@ -284,7 +302,7 @@ export const story: Record<string, StoryNode> = {
     text: 'The door open and Hugo is drained after that huge effort',
     image: '/Images/ChoiceDoorHugo2.png',
     audio: '/sounds/door-opening.mp3',
-    audioVolume: 0.4,             
+    audioVolume: 0.4,
     audioLoop: true,
     choices: [
       {
@@ -302,50 +320,37 @@ export const story: Record<string, StoryNode> = {
     text: '(Obtain information about the professor and when ready click on the computer)',
     image: '/Images/EvilProfessorGabinet.png',
     audio: 'sounds/dramatic-sound.mp3',
-    audioVolume: 0.2,             
+    audioVolume: 0.2,
     audioLoop: true,
     choices: [],
     hotspots: [
-    {
-      area: { top: '24%', left: '57%', width: '5%', height: '15%' },
-      label: 'Tito Trophy',
-      text: 'Tito was awarded the most evil professor of all time',
-    },
-    {
-      area: { top: '0%', left: '17%', width: '12%', height: '12%' },
-      label: 'Student skull',
-      text: 'The skull of the last student to ever challenge Tito and make a report to the director',
-    },
-    {
-      area: { top: '13%', left: '67%', width: '12%', height: '12%' },
-      label: 'Student skull',
-      nextId:'start'
-    },
-  ]
+      {
+        area: { top: '24%', left: '57%', width: '5%', height: '15%' },
+        label: 'Tito Trophy',
+        text: 'Tito was awarded the most evil professor of all time',
+      },
+      {
+        area: { top: '0%', left: '17%', width: '12%', height: '12%' },
+        label: 'Student skull',
+        text: 'The skull of the last student to ever challenge Tito and make a report to the director',
+      },
+      {
+        area: { top: '13%', left: '67%', width: '12%', height: '12%' },
+        label: 'THE END',
+        nextId: 'ToBeContinued'
+      },
+    ]
   },
   ToBeContinued: {
     id: 'ToBeContinued',
     title: 'To Be Continued',
     text: '',
-    video: '/Videos/Fcul.mp4',
+    video: '/Videos/the_end.mp4',
+    audio: '/sounds/the_end.mp3',
+    audioVolume: 0.4,
+    audioLoop: true,
+    defaultChoiceId: 'start',
     choices: [],
-    hotspots: [
-    {
-      area: { top: '24%', left: '57%', width: '5%', height: '15%' },
-      label: 'Tito Trophy',
-      text: 'Tito was awarded the most evil professor of all time',
-    },
-    {
-      area: { top: '0%', left: '17%', width: '12%', height: '12%' },
-      label: 'Student skull',
-      text: 'The skull of the last student to ever challenge Tito and make a report to the director',
-    },
-    {
-      area: { top: '13%', left: '67%', width: '12%', height: '12%' },
-      label: 'Student skull',
-      nextId:'ToBeContinued'
-    },
-  ]
   },
 };
 
