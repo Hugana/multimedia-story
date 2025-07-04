@@ -11,15 +11,9 @@ export default function HomePage() {
       </Head>
 
       <main style={{
-        height: '100vh',
-        width: '100vw',
-        backgroundColor: '#111',
-        color: '#fff',
-        fontFamily: 'sans-serif'
       }}>
-        <div>
           <StoryEngine />
-        </div>
+
       </main>
     </>
   );

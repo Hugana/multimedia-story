@@ -4,7 +4,6 @@
   flex-direction: column;
   align-items: center;
   height: 100%;
-  background-color: #000;
   margin-bottom: 10%;
 }
 
@@ -15,7 +14,6 @@
   flex-grow: 1;
   width: 100%;
   height: 100%;
-  background-color: #000;
   overflow: hidden;
 }
 
@@ -74,14 +72,6 @@
   background-color: #666;
 }
 
-.treePanel {
-  flex: 1;
-  height: 100%;
-  background-color: #111;
-  padding: 1rem;
-  overflow-y: auto;
-  box-sizing: border-box;
-}
 
 
 .treeNodeWrapper {
@@ -146,14 +136,12 @@
 }
 
 .intro {
-  color: white;
   text-align: center;
   padding: 18rem;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  font-family: UndertaleFont, sans-serif;
 }
 
 .intro h1 {
@@ -188,7 +176,6 @@
 
 .treePanel {
   flex: 1;
-  background-color: #111;
   padding: 1rem;
   border-radius: 12px;
   display: flex;
@@ -209,7 +196,6 @@
   font-size: 1.3rem;
   margin-bottom: 2rem;
   font-style: italic;
-  color: #cccccc;
   text-align: center;
   max-width: 600px;
 }
@@ -217,7 +203,6 @@
 .enginePrompt {
   font-size: 1.1rem;
   margin-bottom: 2rem;
-  color: #aaa;
 }
 
 .startButton {
@@ -276,3 +261,20 @@
   pointer-events: auto;
 }
 
+.thumbnailPreview {
+  position: absolute;
+  top: 0;
+  z-index: 100;
+  background: black;
+  border: 1px solid white;
+  padding: 5px;
+  width: 180px;
+  height: 100px;
+  overflow: hidden;
+}
+
+.thumbnailImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

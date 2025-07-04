@@ -1,0 +1,12 @@
+<config>
+  <interface>
+    <font>sans-serif</font>
+    <background>#111</background>
+    <textColor>#ccc</textColor>
+  </interface>
+  <textbox>
+    <font>OpenSans</font>
+    <background>#111</background>
+    <textColor>#ffffff</textColor>
+  </textbox>
+</config>
