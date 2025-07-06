@@ -159,7 +159,7 @@ export const story: Record<string, StoryNode> = {
   ChoiceDoor: {
     id: 'ChoiceDoor',
     title: 'The First Challenge',
-    text: 'Our heroes arrive at the door of Room R. There are sensors, a keypad with thermal recognition and... a handwritten sign \n (Make the correct choice)',
+    text: 'Our heroes arrive at the door of Room R. There are sensors, a keypad with thermal recognition and... a handwritten sign \n (Make the correct choice).',
     image: '/Images/ChoiceDoor.png',
     audio: '/sounds/first-challenge.mp3',
     audioVolume: 0.1,
@@ -191,7 +191,7 @@ export const story: Record<string, StoryNode> = {
   ChoiceDoorSofia1: {
     id: 'ChoiceDoorSofia1',
     title: 'Sofia casts a spell',
-    text: 'Sofia cast\'s a spell to disguice her friends to appear like students that have 20',
+    text: 'Sofia cast\'s a spell to disguice her friends to appear like students that have 20.',
     image: '/Images/ChoiceDoorSofia1.png',
     audio: '/sounds/spell.mp3',
     audioVolume: 0.1,
@@ -209,7 +209,7 @@ export const story: Record<string, StoryNode> = {
   ChoiceDoorSofia2: {
     id: 'ChoiceDoorSofia2',
     title: 'Evil Spirit Challenge',
-    text: 'Sofia spell was not strong enough and the door was protected with black magic, summoning the evil professor in spirit form',
+    text: 'The Sofia spell was not strong enough, and the door was protected by black magic. This summoned the evil professor in spirit form.',
     image: '/Images/ChoiceDoorSofia2.png',
     audio: '/sounds/demon.mp3',
     audioVolume: 0.1,
@@ -226,8 +226,8 @@ export const story: Record<string, StoryNode> = {
   },
   ChoiceDoorJoao1: {
     id: 'ChoiceDoorJoao1',
-    title: 'Joao grabs the crowbar and a wine bottle',
-    text: 'Joao gets himself a crowbar and a wine bottle and says :"This needs to be breached with pure strenght".',
+    title: 'João grabs the crowbar and a wine bottle',
+    text: 'João gets a crowbar and a wine bottle, saying, "This needs to be broken with pure strength."',
     image: '/Images/ChoiceDoorJoao1.png',
     audio: '/sounds/glass-breaking.mp3',
     audioVolume: 0.1,
@@ -244,8 +244,8 @@ export const story: Record<string, StoryNode> = {
   },
   ChoiceDoorJoao2: {
     id: 'ChoiceDoorJoao2',
-    title: 'Joao grabs the crowbar and a wine bottle',
-    text: 'Joao tried to break the lock of the door but the door has too strong and he ended up pooping himself..',
+    title: 'João grabs the crowbar and a wine bottle',
+    text: 'João tried to break the door down, but it was too strong. He ended up pooping himself...',
     image: '/Images/ChoiceDoorJoao2.png',
     audio: '/sounds/fart.mp3',
     audioVolume: 0.1,
@@ -299,7 +299,7 @@ export const story: Record<string, StoryNode> = {
   ChoiceDoorHugo2: {
     id: 'ChoiceDoorHugo2',
     title: 'The Door opens',
-    text: 'The door open and Hugo is drained after that huge effort',
+    text: 'The door opens and Hugo is drained after that huge effort.',
     image: '/Images/ChoiceDoorHugo2.png',
     audio: '/sounds/door-opening.mp3',
     audioVolume: 0.4,
@@ -317,7 +317,7 @@ export const story: Record<string, StoryNode> = {
   EvilProfessorGabinetChallenge: {
     id: 'EvilProfessorGabinetChallenge',
     title: 'The Gabinet',
-    text: '(Obtain information about the professor and when ready click on the computer)',
+    text: '(Obtain information about the professor and when ready click on the computer).',
     image: '/Images/EvilProfessorGabinet.png',
     audio: 'sounds/dramatic-sound.mp3',
     audioVolume: 0.2,
@@ -327,12 +327,12 @@ export const story: Record<string, StoryNode> = {
       {
         area: { top: '24%', left: '57%', width: '5%', height: '15%' },
         label: 'Tito Trophy',
-        text: 'Tito was awarded the most evil professor of all time',
+        text: 'Tito was awarded the most evil professor of all time.',
       },
       {
         area: { top: '0%', left: '17%', width: '12%', height: '12%' },
         label: 'Student skull',
-        text: 'The skull of the last student to ever challenge Tito and make a report to the director',
+        text: 'The skull of the last student to ever challenge Tito and make a report to the director.',
       },
       {
         area: { top: '13%', left: '67%', width: '12%', height: '12%' },

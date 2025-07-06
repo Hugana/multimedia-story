@@ -115,6 +115,11 @@ const StoryEngine = () => {
       }
     }
 
+    if (!node.text?.trim()) {
+      setIsAnimating(false);
+      return;
+    }
+
     const interval = setInterval(() => {
       const char = node.text[index];
       if (char !== undefined) {
@@ -216,52 +221,52 @@ const StoryEngine = () => {
   };
 
   const renderTree = (node: PathNode, depth = 0) => (
+    <div
+      className={`${styles.treeNodeWrapper} ${depth === 0 ? styles.rootNode : ''}`}
+      key={node.id}
+    >
       <div
-        className={`${styles.treeNodeWrapper} ${depth === 0 ? styles.rootNode : ''}`}
-        key={node.id}
+        className={`${styles.nodeBox} ${node.id === currentNode.id ? styles.current : ''}`}
+        onClick={() => setCurrentNode(node)}
+        onMouseEnter={() => setHoverNodeId(node.id)}
+        onMouseLeave={() => setHoverNodeId(null)}
+        style={{ position: 'relative' }}
       >
-        <div
-          className={`${styles.nodeBox} ${node.id === currentNode.id ? styles.current : ''}`}
-          onClick={() => setCurrentNode(node)}
-          onMouseEnter={() => setHoverNodeId(node.id)}
-          onMouseLeave={() => setHoverNodeId(null)}
-          style={{ position: 'relative' }} 
-        >
-          {story[node.id]?.title || node.id}
+        {story[node.id]?.title || node.id}
 
-          {hoverNodeId === node.id && (
-            <div className={styles.thumbnailPreview}>
-              {story[node.id]?.video ? (
-                <VideoThumbnail videoSrc={story[node.id].video!} />
-              ) : story[node.id]?.image ? (
-                <img
-                  src={story[node.id].image!}
-                  alt="Thumbnail"
-                  className={styles.thumbnailImage}
-                />
-              ) : null}
-            </div>
-          )}
-        </div>
-
-        <div className={styles.childrenContainer}>
-          {node.children.map((child) => renderTree(child, depth + 1))}
-        </div>
+        {hoverNodeId === node.id && (
+          <div className={styles.thumbnailPreview}>
+            {story[node.id]?.video ? (
+              <VideoThumbnail videoSrc={story[node.id].video!} />
+            ) : story[node.id]?.image ? (
+              <img
+                src={story[node.id].image!}
+                alt="Thumbnail"
+                className={styles.thumbnailImage}
+              />
+            ) : null}
+          </div>
+        )}
       </div>
-    );
+
+      <div className={styles.childrenContainer}>
+        {node.children.map((child) => renderTree(child, depth + 1))}
+      </div>
+    </div>
+  );
 
   if (!hasStarted) {
     return (
-      <div className={styles.intro} 
-      style={{
-        backgroundColor: config?.interface.background,
-        color: config?.interface.textColor,
-        fontFamily: config?.interface.font,
-        margin: 0,
-        padding: 0,
-        height: "100%",
-        width: "100%",
-      }}>
+      <div className={styles.intro}
+        style={{
+          backgroundColor: config?.interface.background,
+          color: config?.interface.textColor,
+          fontFamily: config?.interface.font,
+          margin: 0,
+          padding: 0,
+          height: "100%",
+          width: "100%",
+        }}>
         <h1 className={styles.engineTitle}>VisioPath</h1>
         <p className={styles.engineSubtitle}>Your story, your choices, your world—on the web.</p>
         <p className={styles.enginePrompt}>Click the button to begin. Turn up your volume for the best experience.</p>
@@ -275,10 +280,10 @@ const StoryEngine = () => {
   return (
     <div className={styles.container}
       style={{
-      backgroundColor: config?.interface.background,
-      color: config?.interface.textColor,
-      fontFamily: config?.interface.font,
-    }}>
+        backgroundColor: config?.interface.background,
+        color: config?.interface.textColor,
+        fontFamily: config?.interface.font,
+      }}>
       <div className={styles.storyPanel}>
         <div key={currentNode.id} className={`${styles.storyMediaContainer} ${styles.fadeInSlideUp}`}>
           {node.video ? (
@@ -338,39 +343,44 @@ const StoryEngine = () => {
             </div>
           )}
 
-          <p
-            className={styles.storyText}
-            style={{
-              fontFamily: config?.textbox.font
-            }}
-            onClick={() => {
-              if (isAnimating) {
-                setDisplayedText(node.text);
-                setIsAnimating(false);
-              }
-            }}
-          >
-            {displayedText}
-          </p>
-
-          {node.choices.map((choice, index) =>
-            visibleChoices[index] ? (
-              <button
-                key={index}
-                onClick={() => handleChoice(choice.nextId)}
-                className={styles.choiceButton}
-                style={{
-                  fontFamily: config?.interface.font,
-                  position: 'absolute',
-                  ...choice.position,
-                  zIndex: 10
-                }}
-              >
-                {choice.text}
-              </button>
-            ) : null
+          {node.text?.trim() && (
+            <p
+              className={styles.storyText}
+              style={{
+                fontFamily: config?.textbox.font
+              }}
+              onClick={() => {
+                if (isAnimating) {
+                  setDisplayedText(node.text);
+                  setIsAnimating(false);
+                }
+              }}
+            >
+              {displayedText}
+            </p>
           )}
 
+          {node.choices
+            .map((choice, index) => ({ choice, index }))
+            .filter(({ choice }) => choice.text?.trim() !== '')
+            .map(({ choice, index }) =>
+              visibleChoices[index] ? (
+                <button
+                  key={index}
+                  onClick={() => handleChoice(choice.nextId)}
+                  className={styles.choiceButton}
+                  style={{
+                    fontFamily: config?.interface.font,
+                    position: 'absolute',
+                    ...choice.position,
+                    zIndex: 10
+                  }}
+                >
+                  {choice.text}
+                </button>
+              ) : null
+            )
+          }
         </div>
 
         <button onClick={restartStory} className={styles.restartButton}>
@@ -378,10 +388,10 @@ const StoryEngine = () => {
         </button>
       </div>
 
-      <div className={styles.treePanel} 
-      style={{
-      fontFamily: config?.interface.font,
-      }}>
+      <div className={styles.treePanel}
+        style={{
+          fontFamily: config?.interface.font,
+        }}>
         <h2 >Story Tree</h2>
         <div className={styles.tree}>{renderTree(rootNode)}</div>
       </div>
@@ -402,7 +412,7 @@ const VideoThumbnail = ({ videoSrc }: { videoSrc: string }) => {
     const ctx = canvas.getContext('2d');
 
     const handleSeeked = () => {
-      if (!ctx) return; 
+      if (!ctx) return;
       ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
       const url = canvas.toDataURL();
       setImageURL(url);
