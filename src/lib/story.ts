@@ -402,7 +402,7 @@ export const story: Record<string, StoryNode> = {
 
   AndreMatos: {
     id: 'AndreMatos',
-    title: 'AndreMatos',
+    title: 'Andre Matos',
     text: 'Andre Matos: You guys are trying to change the system. I tried too... in 2002. I failed. But I left a door open.',
     image: '/Images/AndreMatos.png',
     audio: '/sounds/reunion.mp3',
@@ -421,8 +421,8 @@ export const story: Record<string, StoryNode> = {
 
   SofiaAsking: {
     id: 'SofiaAsking',
-    title: 'SofiaAsking',
-    text: 'Sofia a Maga: You are the author of the script sistema-vampiro-2002.sh?!',
+    title: 'Sofia Asking',
+    text: 'Sofia The Magician: You are the author of the script sistema-vampiro-2002.sh?!',
     image: '/Images/SofiaAsking.png',
     audio: '/sounds/reunion.mp3',
     audioVolume: 0.5,
@@ -440,8 +440,8 @@ export const story: Record<string, StoryNode> = {
 
    AndreMatos1: {
     id: 'AndreMatos1',
-    title: 'AndreMatos1',
-    text: 'Andre Matos: I am. But it only works if you have access... to the Rectorys central server.And for that... youll need something few people know about: the Incomplete Proof Key, hidden in the abandoned Lab',
+    title: 'Andre Matos',
+    text: 'Andre Matos: I am. But it only works if you have access... to the Rectorys central server.And for that... you will need something few people know about: the Incomplete Proof Key, hidden in the abandoned Lab',
     image: '/Images/AndreMatos.png',
     audio: '/sounds/reunion.mp3',
     audioVolume: 0.5,
@@ -449,7 +449,7 @@ export const story: Record<string, StoryNode> = {
     choices: [
       {
         text: 'Next',
-        nextId: 'SofiaAsking',
+        nextId: 'AbandonedLab',
         appearDelay: 2500,
         visibleDuration: null,
         position: { top: '20px', left: '50%' } // center top
@@ -457,12 +457,246 @@ export const story: Record<string, StoryNode> = {
     ]
   },
 
+  AbandonedLab: {
+    id: 'AbandonedLab',
+    title: 'The Abandoned Lab',
+    text: 'Our heroes now arrive at Abandoned Lab',
+    image: '/Images/AbandonedLab.png',
+    audio: '/sounds/first-challenge.mp3',
+    audioVolume: 0.1,
+    audioLoop: true,
+    choices: [
+      {
+        text: 'Next',
+        nextId: 'DemonicProfessor',
+        appearDelay: 2500,
+        visibleDuration: null,
+        position: { top: '20px', left: '50%' } // center top
+      },
+    ]
+  },
+
+  DemonicProfessor: {
+    id: 'DemonicProfessor',
+    title: 'The Final Encounter',
+    text: 'IF YOU THINK, YOU ARE GETTING THE KEY!!! YOU NEED TO BEAT ME FIRST!!! MUUUUUAHAHAHA',
+    image: '/Images/DemonicFormSetor.png',
+    audio: '/sounds/first-challenge.mp3',
+    audioVolume: 0.1,
+    audioLoop: true,
+    choices: [
+      {
+        text: 'Battle with Sofia',
+        nextId: 'SofiaFinalBattle',
+        appearDelay: 2500,
+        visibleDuration: null,
+        position: { top: '20px', left: '45%' } // center top
+      },
+
+      {
+        text: 'Battle with João',
+        nextId: 'JoaoFinalBattle1',
+        appearDelay: 2500,
+        visibleDuration: null,
+        position: { top: '20px', left: '20%' } 
+      },
+
+      {
+        text: 'Battle with Hugo',
+        nextId: 'HugoFinalBattle',
+        appearDelay: 2500,
+        visibleDuration: null,
+        position: { top: '20px', left: '70%' } 
+      },
+    ]
+  },
+
+  SofiaFinalBattle: {
+    id: 'SofiaFinalBattle',
+    title: 'Sofia Battle',
+    text: 'Sofia tries to summon a lvl 3 spirit to fight, but the demonic AURA is too strong...',
+    image: '/Images/SofiaFinalBattle.png',
+    audio: '/sounds/reunion.mp3',
+    audioVolume: 0.5,
+    audioLoop: true,
+    choices: [
+      {
+        text: 'You Failed. Retry',
+        nextId: 'DemonicProfessor',
+        appearDelay: 2500,
+        visibleDuration: null,
+        position: { top: '20px', left: '50%' } // center top
+      },
+    ]
+  },
+
+  JoaoFinalBattle1: {
+    id: 'JoaoFinalBattle1',
+    title: 'Sofia Battle',
+    text: 'João raises his fits and challenges the evil demonic professor for a fight!',
+    image: '/Images/JoaoDemonicFight1.png',
+    audio: '/sounds/reunion.mp3',
+    audioVolume: 0.5,
+    audioLoop: true,
+    choices: [
+      {
+        text: 'FIGHT!!!',
+        nextId: 'JoaoFinalBattle2',
+        appearDelay: 2500,
+        visibleDuration: null,
+        position: { top: '20px', left: '50%' } // center top
+      },
+    ]
+  },
+
+  JoaoFinalBattle2: {
+    id: 'JoaoFinalBattle2',
+    title: 'Sofia Battle',
+    text: 'The professor is to strong and joao cant win the fight...',
+    image: '/Images/JoaoDemonicFight2.png',
+    audio: '/sounds/reunion.mp3',
+    audioVolume: 0.5,
+    audioLoop: true,
+    choices: [
+      {
+        text: 'You Failed. Retry',
+        nextId: 'DemonicProfessor',
+        appearDelay: 2500,
+        visibleDuration: null,
+        position: { top: '20px', left: '50%' } // center top
+      },
+    ]
+  },
+
+  HugoFinalBattle: {
+    id: 'HugoFinalBattle',
+    title: 'Hugo Battle',
+    text: 'Hugo challanges the evil professor to a programming duel!!',
+    image: '/Images/HugoFinalFight.png',
+    audio: '/sounds/reunion.mp3',
+    audioVolume: 0.5,
+    audioLoop: true,
+    choices: [
+      {
+        text: 'Next',
+        nextId: 'HugoFinalBattle2',
+        appearDelay: 2500,
+        visibleDuration: null,
+        position: { top: '20px', left: '50%' } // center top
+      },
+    ]
+  },
+
+  HugoFinalBattle2: {
+    id: 'HugoFinalBattle2',
+    title: 'Hugo Battle',
+    text: 'The battle gets super intense with both arguing about what is the best programming language',
+    image: '/Images/HugoFinalFight2.png',
+    audio: '/sounds/reunion.mp3',
+    audioVolume: 0.5,
+    audioLoop: true,
+    choices: [
+      {
+        text: 'Next',
+        nextId: 'FinalBattleResult',
+        appearDelay: 2500,
+        visibleDuration: null,
+        position: { top: '20px', left: '50%' } // center top
+      },
+    ]
+  },
+
+  FinalBattleResult: {
+    id: 'FinalBattleResult',
+    title: 'Hugo Battle',
+    text: 'Both die in a tragic and hot explosion.',
+    image: '/Images/BattleResult.png',
+    audio: '/sounds/reunion.mp3',
+    audioVolume: 0.5,
+    audioLoop: true,
+    choices: [
+      {
+        text: 'Next',
+        nextId: 'TheKey',
+        appearDelay: 2500,
+        visibleDuration: null,
+        position: { top: '20px', left: '50%' } // center top
+      },
+    ]
+  },
+
+  TheKey: {
+    id: 'TheKey',
+    title: 'The Key',
+    text: 'Sofia and João are able to retrieve the key to destroy the evil professor plans',
+    image: '/Images/TheKey.png',
+    audio: '/sounds/reunion.mp3',
+    audioVolume: 0.5,
+    audioLoop: true,
+    choices: [
+      {
+        text: 'Next',
+        nextId: 'Memories',
+        appearDelay: 2500,
+        visibleDuration: null,
+        position: { top: '20px', left: '50%' } // center top
+      },
+    ]
+  },
+
+
+  Memories: {
+    id: 'Memories',
+    title: 'Memories',
+    text: 'At the end they were able to change the program, stop the evil plans and save FCUL. But at what cost??? Hugo was not there with them',
+    image: '/Images/Memories.png',
+    audio: '/sounds/reunion.mp3',
+    audioVolume: 0.5,
+    audioLoop: true,
+    choices: [
+      {
+        text: 'Next',
+        nextId: 'Library',
+        appearDelay: 2500,
+        visibleDuration: null,
+        position: { top: '20px', left: '50%' } // center top
+      },
+    ]
+  },
+
+  Library: {
+    id: 'Library',
+    title: 'Library',
+    text: 'But in a quiet day at the library... João and Sofia were suprised by Hugo',
+    image: '/Images/Library.png',
+    audio: '/sounds/reunion.mp3',
+    audioVolume: 0.5,
+    audioLoop: true,
+    choices: [
+      {
+        text: 'Next',
+        nextId: 'TheEnd',
+        appearDelay: 2500,
+        visibleDuration: null,
+        position: { top: '20px', left: '50%' } // center top
+      },
+    ]
+  },
+
+  TheEnd: {
+    id: 'TheEnd',
+    title: 'TheEnd',
+    text: 'THE END',
+    image: '/Images/TheEnd.png',
+    audio: '/sounds/reunion.mp3',
+    audioVolume: 0.5,
+    audioLoop: true,
+    choices: [
+    ]
+  },
+ 
+ 
   
-
-
-
-  
-
   ToBeContinued: {
     id: 'ToBeContinued',
     title: 'To Be Continued',
