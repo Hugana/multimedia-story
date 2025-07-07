@@ -337,10 +337,132 @@ export const story: Record<string, StoryNode> = {
       {
         area: { top: '13%', left: '67%', width: '12%', height: '12%' },
         label: 'THE END',
-        nextId: 'ToBeContinued'
+        nextId: 'EvilProfessorDesktop'
       },
     ]
   },
+
+  EvilProfessorDesktop: {
+    id: 'EvilProfessorDesktop',
+    title: 'Desktop',
+    text: 'The students were able to change the grade but a suspicious file caught their eyes (click projeto_presidencial.mrs).',
+    image: '/Images/DesktopEnv.png',
+    audio: 'sounds/dramatic-sound.mp3',
+    audioVolume: 0.2,
+    audioLoop: true,
+    choices: [],
+    hotspots: [
+      {
+        area: { top: '14%', left: '52%', width: '10%', height: '15%' },
+        label: 'SUS File',
+        text: 'SUS File.',
+        nextId: 'ThePresidencialPlot'
+      },
+    
+    ]
+  },
+
+  ThePresidencialPlot: {
+    id: 'ThePresidencialPlot',
+    title: 'The ThePresidencialPlot',
+    text: '“Operation MAGNO - Initiated by Marcelo and Tito in 2017. \n Objective: To create a national assessment algorithm to level out students averages and avoid ‘academic inflation’.And more... The system would be secretly fed by the students social networks, the location of their cell phones on exam days, and... the consumption of coffee in the college machines.',
+    image: '/Images/MarceloAndEvilSetor.png',
+    audio: '/sounds/reunion.mp3',
+    audioVolume: 0.5,
+    audioLoop: true,
+    choices: [
+      {
+        text: 'Next',
+        nextId: 'TheReunion2',
+        appearDelay: 2500,
+        visibleDuration: null,
+        position: { top: '20px', left: '50%' } // center top
+      },
+    ]
+  },
+
+  TheReunion2: {
+    id: 'TheReunion2',
+    title: 'The Reunion 2',
+    text: 'Sofia, Hugo and João sit drinking and thinking on how they could stop the madness',
+    image: '/Images/thereunion2.png',
+    audio: '/sounds/reunion.mp3',
+    audioVolume: 0.5,
+    audioLoop: true,
+    choices: [
+      {
+        text: 'Next',
+        nextId: 'AndreMatos',
+        appearDelay: 2500,
+        visibleDuration: null,
+        position: { top: '20px', left: '50%' } // center top
+      },
+    ]
+  },
+
+  AndreMatos: {
+    id: 'AndreMatos',
+    title: 'AndreMatos',
+    text: 'Andre Matos: You guys are trying to change the system. I tried too... in 2002. I failed. But I left a door open.',
+    image: '/Images/AndreMatos.png',
+    audio: '/sounds/reunion.mp3',
+    audioVolume: 0.5,
+    audioLoop: true,
+    choices: [
+      {
+        text: 'Next',
+        nextId: 'SofiaAsking',
+        appearDelay: 2500,
+        visibleDuration: null,
+        position: { top: '20px', left: '50%' } // center top
+      },
+    ]
+  },
+
+  SofiaAsking: {
+    id: 'SofiaAsking',
+    title: 'SofiaAsking',
+    text: 'Sofia a Maga: You are the author of the script sistema-vampiro-2002.sh?!',
+    image: '/Images/SofiaAsking.png',
+    audio: '/sounds/reunion.mp3',
+    audioVolume: 0.5,
+    audioLoop: true,
+    choices: [
+      {
+        text: 'Next',
+        nextId: 'AndreMatos1',
+        appearDelay: 2500,
+        visibleDuration: null,
+        position: { top: '20px', left: '50%' } // center top
+      },
+    ]
+  },
+
+   AndreMatos1: {
+    id: 'AndreMatos1',
+    title: 'AndreMatos1',
+    text: 'Andre Matos: I am. But it only works if you have access... to the Rectorys central server.And for that... youll need something few people know about: the Incomplete Proof Key, hidden in the abandoned Lab',
+    image: '/Images/AndreMatos.png',
+    audio: '/sounds/reunion.mp3',
+    audioVolume: 0.5,
+    audioLoop: true,
+    choices: [
+      {
+        text: 'Next',
+        nextId: 'SofiaAsking',
+        appearDelay: 2500,
+        visibleDuration: null,
+        position: { top: '20px', left: '50%' } // center top
+      },
+    ]
+  },
+
+  
+
+
+
+  
+
   ToBeContinued: {
     id: 'ToBeContinued',
     title: 'To Be Continued',
