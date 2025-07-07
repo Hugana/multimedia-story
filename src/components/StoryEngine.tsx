@@ -48,6 +48,7 @@ const StoryEngine = () => {
   const [activeHotspot, setActiveHotspot] = useState<StoryHotspot | null>(null);
   const [hoverNodeId, setHoverNodeId] = useState<string | null>(null);
   const [config, setConfig] = useState<AppConfig | null>(null);
+  const isLeafNode = (node: PathNode) => node.children.length === 0;
 
 
 
@@ -354,7 +355,7 @@ const StoryEngine = () => {
           </p>
 
           {node.choices.map((choice, index) =>
-            visibleChoices[index] ? (
+            visibleChoices[index] && currentNode.id === node.id && isLeafNode(currentNode) ? (
               <button
                 key={index}
                 onClick={() => handleChoice(choice.nextId)}
