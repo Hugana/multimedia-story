@@ -1,11 +1,11 @@
 <config>
   <interface>
-    <font>sans-serif</font>
+    <font>UndertaleFont</font>
     <background>#111</background>
     <textColor>#ccc</textColor>
   </interface>
   <textbox>
-    <font>OpenSans</font>
+    <font>sans-serif</font>
     <background>#111</background>
     <textColor>#ffffff</textColor>
   </textbox>
