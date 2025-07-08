@@ -271,7 +271,10 @@ const StoryEngine = () => {
         <h1 className={styles.engineTitle}>VisioPath</h1>
         <p className={styles.engineSubtitle}>Your story, your choices, your world—on the web.</p>
         <p className={styles.enginePrompt}>Click the button to begin. Turn up your volume for the best experience.</p>
-        <button onClick={() => setHasStarted(true)} className={styles.startButton}>
+        <button onClick={() => setHasStarted(true)} className={styles.startButton}
+          style={{
+        fontFamily: config?.interface.font,
+      }}>
           Start Story
         </button>
       </div>
@@ -368,7 +371,7 @@ const StoryEngine = () => {
                 onClick={() => handleChoice(choice.nextId)}
                 className={styles.choiceButton}
                 style={{
-                  fontFamily: config?.interface.font,
+                  fontFamily: config?.textbox.font,
                   position: 'absolute',
                   ...choice.position,
                   zIndex: 10
@@ -381,7 +384,10 @@ const StoryEngine = () => {
 
         </div>
 
-        <button onClick={restartStory} className={styles.restartButton}>
+        <button onClick={restartStory} className={styles.restartButton}
+        style={{
+          fontFamily: config?.interface.font,
+        }}>
           Start Again
         </button>
       </div>
