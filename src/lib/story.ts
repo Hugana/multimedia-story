@@ -140,7 +140,7 @@ export const story: Record<string, StoryNode> = {
   },
   TheReunion: {
     id: 'TheReunion',
-    title: 'The Reunion',
+    title: '#1 The Reunion',
     text: 'Due to the evil plans of Tito the three of them decided: they were going to hack Tito\'s system.',
     image: '/Images/thereunion.png',
     audio: '/sounds/reunion.mp3',
@@ -208,7 +208,7 @@ export const story: Record<string, StoryNode> = {
   },
   ChoiceDoorSofia2: {
     id: 'ChoiceDoorSofia2',
-    title: 'Evil Spirit Challenge',
+    title: 'Evil Spirit Appears',
     text: 'The Sofia spell was not strong enough, and the door was protected by black magic. This summoned the evil professor in spirit form.',
     image: '/Images/ChoiceDoorSofia2.png',
     audio: '/sounds/demon.mp3',
@@ -244,7 +244,7 @@ export const story: Record<string, StoryNode> = {
   },
   ChoiceDoorJoao2: {
     id: 'ChoiceDoorJoao2',
-    title: 'João grabs the crowbar and a wine bottle',
+    title: 'João poops himself',
     text: 'João tried to break the door down, but it was too strong. He ended up pooping himself...',
     image: '/Images/ChoiceDoorJoao2.png',
     audio: '/sounds/fart.mp3',
@@ -336,7 +336,7 @@ export const story: Record<string, StoryNode> = {
       },
       {
         area: { top: '13%', left: '67%', width: '12%', height: '12%' },
-        label: 'THE END',
+        label: 'Tito Computer',
         nextId: 'EvilProfessorDesktop'
       },
     ]
@@ -364,7 +364,7 @@ export const story: Record<string, StoryNode> = {
 
   ThePresidencialPlot: {
     id: 'ThePresidencialPlot',
-    title: 'The ThePresidencialPlot',
+    title: 'The Presidencial Plot',
     text: '“Operation MAGNO - Initiated by Marcelo and Tito in 2017. \n Objective: To create a national assessment algorithm to level out students averages and avoid ‘academic inflation’.And more... The system would be secretly fed by the students social networks, the location of their cell phones on exam days, and... the consumption of coffee in the college machines.',
     image: '/Images/MarceloAndEvilSetor.png',
     audio: '/sounds/reunion.mp3',
@@ -383,7 +383,7 @@ export const story: Record<string, StoryNode> = {
 
   TheReunion2: {
     id: 'TheReunion2',
-    title: 'The Reunion 2',
+    title: '#2 The Reunion',
     text: 'Sofia, Hugo and João sit drinking and thinking about how they can stop the madness.',
     image: '/Images/thereunion2.png',
     audio: '/sounds/reunion.mp3',
@@ -440,7 +440,7 @@ export const story: Record<string, StoryNode> = {
 
    AndreMatos1: {
     id: 'AndreMatos1',
-    title: 'André Matos',
+    title: 'André Revelation',
     text: 'André Matos: I am. But it only works if you have access to the rector central server, and for that, you wil need something that few people know about: the incomplete proof key, hidden in the abandoned lab.',
     image: '/Images/AndreMatos.png',
     audio: '/sounds/reunion.mp3',
@@ -666,7 +666,7 @@ export const story: Record<string, StoryNode> = {
 
   Library: {
     id: 'Library',
-    title: 'Library',
+    title: 'Surprise Visit',
     text: 'But on a quiet day at the library... João and Sofia were surprised by Hugo.',
     image: '/Images/Library.png',
     audio: '/sounds/reunion.mp3',
@@ -693,7 +693,7 @@ export const story: Record<string, StoryNode> = {
     audioLoop: true,
     choices: [
       {
-        text: 'THE END',
+        text: 'To Be Continued',
         nextId: 'ToBeContinued',
         appearDelay: 2500,
         visibleDuration: null,
