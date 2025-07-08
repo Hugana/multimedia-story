@@ -709,4 +709,5 @@ export const story: Record<string, StoryNode> = {
     choices: [],
   },
 };
+console.log(JSON.stringify(story, null, 2));
 
