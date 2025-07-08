@@ -105,7 +105,7 @@ export const story: Record<string, StoryNode> = {
   hugo: {
     id: 'hugo',
     title: 'Hugo Linux Master',
-    text: 'Hugana, wearing a hoodie with a ninja turtle print and a Linux terminal that was always open, muttered: \n\nThis was sabotage... Tito is using evil AI to fix tests... I detected an obscure process called grade_reaper.py.',
+    text: 'Hugo, wearing a hoodie with a ninja turtle print and a Linux terminal that was always open, muttered: \n\nThis was sabotage... Tito is using evil AI to fix tests... I detected an obscure process called grade_reaper.py.',
     image: '/Images/HugoLinux.png',
     audio: '/sounds/hugana.mp3',
     audioVolume: 0.1,
@@ -140,7 +140,7 @@ export const story: Record<string, StoryNode> = {
   },
   TheReunion: {
     id: 'TheReunion',
-    title: 'The Reunion',
+    title: '#1 The Reunion',
     text: 'Due to the evil plans of Tito the three of them decided: they were going to hack Tito\'s system.',
     image: '/Images/thereunion.png',
     audio: '/sounds/reunion.mp3',
@@ -208,7 +208,7 @@ export const story: Record<string, StoryNode> = {
   },
   ChoiceDoorSofia2: {
     id: 'ChoiceDoorSofia2',
-    title: 'Evil Spirit Challenge',
+    title: 'Evil Spirit Appears',
     text: 'The Sofia spell was not strong enough, and the door was protected by black magic. This summoned the evil professor in spirit form.',
     image: '/Images/ChoiceDoorSofia2.png',
     audio: '/sounds/demon.mp3',
@@ -244,7 +244,7 @@ export const story: Record<string, StoryNode> = {
   },
   ChoiceDoorJoao2: {
     id: 'ChoiceDoorJoao2',
-    title: 'João grabs the crowbar and a wine bottle',
+    title: 'João poops himself',
     text: 'João tried to break the door down, but it was too strong. He ended up pooping himself...',
     image: '/Images/ChoiceDoorJoao2.png',
     audio: '/sounds/fart.mp3',
@@ -263,7 +263,7 @@ export const story: Record<string, StoryNode> = {
   ChoiceDoorHugo1: {
     id: 'ChoiceDoorHugo1',
     title: 'Super Linux Programmer Mode',
-    text: 'Hugo gathers his strenght and goes into "Super Programmer Linux Mode" and starts typing ultra fast executing the OpenSezame.py program.',
+    text: 'Hugo gathers his strength and enters "Super Programmer Linux Mode", executing the OpenSesame.py program by typing ultra-fast.',
     image: '/Images/ChoiceDoorHugo1.png',
     audio: '/sounds/power-up.mp3',
     audioVolume: 0.1,
@@ -336,7 +336,7 @@ export const story: Record<string, StoryNode> = {
       },
       {
         area: { top: '13%', left: '67%', width: '12%', height: '12%' },
-        label: 'THE END',
+        label: 'Tito Computer',
         nextId: 'EvilProfessorDesktop'
       },
     ]
@@ -347,7 +347,7 @@ export const story: Record<string, StoryNode> = {
     title: 'Desktop',
     text: 'The students were able to change the grade but a suspicious file caught their eyes (click projeto_presidencial.mrs).',
     image: '/Images/DesktopEnv.png',
-    audio: 'sounds/dramatic-sound.mp3',
+    audio: 'sounds/desktop.mp3',
     audioVolume: 0.2,
     audioLoop: true,
     choices: [],
@@ -364,10 +364,10 @@ export const story: Record<string, StoryNode> = {
 
   ThePresidencialPlot: {
     id: 'ThePresidencialPlot',
-    title: 'The ThePresidencialPlot',
-    text: '“Operation MAGNO - Initiated by Marcelo and Tito in 2017. \n Objective: To create a national assessment algorithm to level out students averages and avoid ‘academic inflation’.And more... The system would be secretly fed by the students social networks, the location of their cell phones on exam days, and... the consumption of coffee in the college machines.',
+    title: 'The Presidencial Plot',
+    text: '"Operation MAGNO" was initiated by Marcelo and Tito in 2017. Objective: To create a national assessment algorithm that levels out student averages and avoids "academic inflation". And more... The system would secretly gather information from students social networks, their phone locations on exam days and coffee consumption from the college vending machines.',
     image: '/Images/MarceloAndEvilSetor.png',
-    audio: '/sounds/reunion.mp3',
+    audio: '/sounds/the_presidencial_plot.mp3',
     audioVolume: 0.5,
     audioLoop: true,
     choices: [
@@ -383,10 +383,10 @@ export const story: Record<string, StoryNode> = {
 
   TheReunion2: {
     id: 'TheReunion2',
-    title: 'The Reunion 2',
-    text: 'Sofia, Hugo and João sit drinking and thinking on how they could stop the madness',
+    title: '#2 The Reunion',
+    text: 'Sofia, Hugo and João sit drinking and thinking about how they can stop the madness.',
     image: '/Images/thereunion2.png',
-    audio: '/sounds/reunion.mp3',
+    audio: '/sounds/drinking_sound.mp3',
     audioVolume: 0.5,
     audioLoop: true,
     choices: [
@@ -402,10 +402,10 @@ export const story: Record<string, StoryNode> = {
 
   AndreMatos: {
     id: 'AndreMatos',
-    title: 'Andre Matos',
-    text: 'Andre Matos: You guys are trying to change the system. I tried too... in 2002. I failed. But I left a door open.',
+    title: 'André Matos',
+    text: 'André Matos: You guys are trying to change the system. I tried too... in 2002. I failed. But I left a door open.',
     image: '/Images/AndreMatos.png',
-    audio: '/sounds/reunion.mp3',
+    audio: '/sounds/andre_matos.mp3',
     audioVolume: 0.5,
     audioLoop: true,
     choices: [
@@ -422,9 +422,9 @@ export const story: Record<string, StoryNode> = {
   SofiaAsking: {
     id: 'SofiaAsking',
     title: 'Sofia Asking',
-    text: 'Sofia The Magician: You are the author of the script sistema-vampiro-2002.sh?!',
+    text: 'Sofia “The Magician”: You are the author of the script sistema-vampiro-2002.sh?!',
     image: '/Images/SofiaAsking.png',
-    audio: '/sounds/reunion.mp3',
+    audio: '/sounds/gasp.mp3',
     audioVolume: 0.5,
     audioLoop: true,
     choices: [
@@ -440,10 +440,10 @@ export const story: Record<string, StoryNode> = {
 
    AndreMatos1: {
     id: 'AndreMatos1',
-    title: 'Andre Matos',
-    text: 'Andre Matos: I am. But it only works if you have access... to the Rectorys central server.And for that... you will need something few people know about: the Incomplete Proof Key, hidden in the abandoned Lab',
+    title: 'André Revelation',
+    text: 'André Matos: I am. But it only works if you have access to the rector central server, and for that, you wil need something that few people know about: the incomplete proof key, hidden in the abandoned lab.',
     image: '/Images/AndreMatos.png',
-    audio: '/sounds/reunion.mp3',
+    audio: '/sounds/andre_matos.mp3',
     audioVolume: 0.5,
     audioLoop: true,
     choices: [
@@ -460,9 +460,9 @@ export const story: Record<string, StoryNode> = {
   AbandonedLab: {
     id: 'AbandonedLab',
     title: 'The Abandoned Lab',
-    text: 'Our heroes now arrive at Abandoned Lab',
+    text: 'Our heroes have now arrived at the Abandoned Lab.',
     image: '/Images/AbandonedLab.png',
-    audio: '/sounds/first-challenge.mp3',
+    audio: '/sounds/the_abandoned_lab.mp3',
     audioVolume: 0.1,
     audioLoop: true,
     choices: [
@@ -479,9 +479,9 @@ export const story: Record<string, StoryNode> = {
   DemonicProfessor: {
     id: 'DemonicProfessor',
     title: 'The Final Encounter',
-    text: 'IF YOU THINK, YOU ARE GETTING THE KEY!!! YOU NEED TO BEAT ME FIRST!!! MUUUUUAHAHAHA',
+    text: 'IF YOU THINK YOU ARE GETTING THE KEY, THINK AGAIN !!! YOU NEED TO BEAT ME FIRST!!! MUUUUUAHAHAHA!',
     image: '/Images/DemonicFormSetor.png',
-    audio: '/sounds/first-challenge.mp3',
+    audio: '/sounds/demonic_professor.mp3',
     audioVolume: 0.1,
     audioLoop: true,
     choices: [
@@ -513,10 +513,10 @@ export const story: Record<string, StoryNode> = {
 
   SofiaFinalBattle: {
     id: 'SofiaFinalBattle',
-    title: 'Sofia Battle',
+    title: '#1 Sofia Battle',
     text: 'Sofia tries to summon a lvl 3 spirit to fight, but the demonic AURA is too strong...',
     image: '/Images/SofiaFinalBattle.png',
-    audio: '/sounds/reunion.mp3',
+    audio: '/sounds/summon.mp3',
     audioVolume: 0.5,
     audioLoop: true,
     choices: [
@@ -532,10 +532,10 @@ export const story: Record<string, StoryNode> = {
 
   JoaoFinalBattle1: {
     id: 'JoaoFinalBattle1',
-    title: 'Sofia Battle',
+    title: '#1 João Battle',
     text: 'João raises his fits and challenges the evil demonic professor for a fight!',
     image: '/Images/JoaoDemonicFight1.png',
-    audio: '/sounds/reunion.mp3',
+    audio: '/sounds/joao1.mp3',
     audioVolume: 0.5,
     audioLoop: true,
     choices: [
@@ -551,10 +551,10 @@ export const story: Record<string, StoryNode> = {
 
   JoaoFinalBattle2: {
     id: 'JoaoFinalBattle2',
-    title: 'Sofia Battle',
-    text: 'The professor is to strong and joao cant win the fight...',
+    title: '#2 João Battle',
+    text: 'The professor is too strong; João cannot win the fight!!!',
     image: '/Images/JoaoDemonicFight2.png',
-    audio: '/sounds/reunion.mp3',
+    audio: '/sounds/joao2.mp3',
     audioVolume: 0.5,
     audioLoop: true,
     choices: [
@@ -570,10 +570,10 @@ export const story: Record<string, StoryNode> = {
 
   HugoFinalBattle: {
     id: 'HugoFinalBattle',
-    title: 'Hugo Battle',
+    title: '#1 Hugo Battle',
     text: 'Hugo challanges the evil professor to a programming duel!!',
     image: '/Images/HugoFinalFight.png',
-    audio: '/sounds/reunion.mp3',
+    audio: '/sounds/hugo_battle.mp3',
     audioVolume: 0.5,
     audioLoop: true,
     choices: [
@@ -589,10 +589,10 @@ export const story: Record<string, StoryNode> = {
 
   HugoFinalBattle2: {
     id: 'HugoFinalBattle2',
-    title: 'Hugo Battle',
-    text: 'The battle gets super intense with both arguing about what is the best programming language',
+    title: '#2 Hugo Battle',
+    text: 'The battle intensifies as they argue about which programming language is the best.',
     image: '/Images/HugoFinalFight2.png',
-    audio: '/sounds/reunion.mp3',
+    audio: '/sounds/hugo_battle.mp3',
     audioVolume: 0.5,
     audioLoop: true,
     choices: [
@@ -608,10 +608,10 @@ export const story: Record<string, StoryNode> = {
 
   FinalBattleResult: {
     id: 'FinalBattleResult',
-    title: 'Hugo Battle',
+    title: '#3 Hugo Battle',
     text: 'Both die in a tragic and hot explosion.',
     image: '/Images/BattleResult.png',
-    audio: '/sounds/reunion.mp3',
+    audio: '/sounds/hugo3.mp3',
     audioVolume: 0.5,
     audioLoop: true,
     choices: [
@@ -628,9 +628,9 @@ export const story: Record<string, StoryNode> = {
   TheKey: {
     id: 'TheKey',
     title: 'The Key',
-    text: 'Sofia and João are able to retrieve the key to destroy the evil professor plans',
+    text: 'Sofia and João are able to retrieve the key to destroy the evil professor plans.',
     image: '/Images/TheKey.png',
-    audio: '/sounds/reunion.mp3',
+    audio: '/sounds/the_key.mp3',
     audioVolume: 0.5,
     audioLoop: true,
     choices: [
@@ -648,9 +648,9 @@ export const story: Record<string, StoryNode> = {
   Memories: {
     id: 'Memories',
     title: 'Memories',
-    text: 'At the end they were able to change the program, stop the evil plans and save FCUL. But at what cost??? Hugo was not there with them',
+    text: 'In the end they were able to change the program, stop the evil plans and save FCUL. But at what cost??? Hugo was not there with them.',
     image: '/Images/Memories.png',
-    audio: '/sounds/reunion.mp3',
+    audio: '/sounds/memories.mp3',
     audioVolume: 0.5,
     audioLoop: true,
     choices: [
@@ -666,10 +666,10 @@ export const story: Record<string, StoryNode> = {
 
   Library: {
     id: 'Library',
-    title: 'Library',
-    text: 'But in a quiet day at the library... João and Sofia were suprised by Hugo',
+    title: 'Surprise Visit',
+    text: 'But on a quiet day at the library... João and Sofia were surprised by Hugo.',
     image: '/Images/Library.png',
-    audio: '/sounds/reunion.mp3',
+    audio: '/sounds/surprise.mp3',
     audioVolume: 0.5,
     audioLoop: true,
     choices: [
@@ -685,24 +685,29 @@ export const story: Record<string, StoryNode> = {
 
   TheEnd: {
     id: 'TheEnd',
-    title: 'TheEnd',
-    text: 'THE END',
+    title: 'The End',
+    text: '',
     image: '/Images/TheEnd.png',
-    audio: '/sounds/reunion.mp3',
+    audio: '/sounds/the_end.mp3',
     audioVolume: 0.5,
     audioLoop: true,
     choices: [
+      {
+        text: 'To Be Continued',
+        nextId: 'ToBeContinued',
+        appearDelay: 2500,
+        visibleDuration: null,
+        position: { top: '20px', left: '50%' } // center top
+      },
     ]
   },
  
- 
-  
   ToBeContinued: {
     id: 'ToBeContinued',
     title: 'To Be Continued',
     text: '',
     video: '/Videos/the_end.mp4',
-    audio: '/sounds/the_end.mp3',
+    audio: '/sounds/to_be_continued.mp3',
     audioVolume: 0.4,
     audioLoop: true,
     defaultChoiceId: 'start',
